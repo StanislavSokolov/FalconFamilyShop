@@ -10,7 +10,7 @@
     <meta name="keywords" content="Travel, Start Your Jorney, Discount 10-30% Off, Why Choose Us">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>UPDATA</title>
+    <title>Обновите данные</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="UPDATA.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -31,7 +31,7 @@
   </head>
   <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="/">SOKOL0VE</a>
+          <a href="https://www.wildberries.ru/seller/371119">SOKOL0VE</a>
         </h3>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
@@ -42,18 +42,18 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="SOKOL0VE.html#sec-9c61" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="SOKOL0VE.html#sec-c38a" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="SOKOL0VE.html#sec-9aa4" data-page-id="36011200">Цена</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#sec-9aa4" data-page-id="36011200">Цена</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="SOKOL0VE.html#sec-9c61" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="SOKOL0VE.html#sec-c38a" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="SOKOL0VE.html#sec-9aa4" data-page-id="36011200">Цена</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/datasec-9aa4" data-page-id="36011200">Цена</a>
 </li></ul>
               </div>
             </div>
@@ -64,7 +64,7 @@
     <section class="skrollable u-clearfix u-image u-section-1" src="" id="sec-59a1">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h1 class="u-text u-text-body-alt-color u-title u-text-1">Обновите данные...</h1>
-        <a href="https://nicepage.com/c/pricing-html-templates" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Обновить</a>
+        <a href="/FalconFamilyShop/data" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Обновить</a>
       </div>
     </section>
 

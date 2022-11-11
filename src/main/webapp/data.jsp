@@ -35,7 +35,7 @@
   </head>
   <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="/">SOKOL0VE</a>
+          <a href="https://www.wildberries.ru/seller/371119">SOKOL0VE</a>
         </h3>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
@@ -46,18 +46,18 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="SOKOL0VE.html#sec-9c61" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="SOKOL0VE.html#sec-c38a" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="SOKOL0VE.html#sec-9aa4" data-page-id="36011200">Цена</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#sec-9aa4" data-page-id="36011200">Цена</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="SOKOL0VE.html#sec-9c61" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="SOKOL0VE.html#sec-c38a" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="SOKOL0VE.html#sec-9aa4" data-page-id="36011200">Цена</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data#sec-9aa4" data-page-id="36011200">Цена</a>
 </li></ul>
               </div>
             </div>
@@ -73,45 +73,45 @@
             <div class="u-align-center u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
                 <h1 class="u-align-left u-hover-feature u-text u-text-body-alt-color u-text-default u-text-2">Заказы</h1>
-                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-3">10</h1>
+                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-3">${sumOrder}</h1>
               </div>
             </div>
             <div class="u-align-center u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
                 <h1 class="u-align-left u-hover-feature u-text u-text-body-alt-color u-text-default u-text-4">Продажи</h1>
-                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-5">23</h1>
+                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-5">${sumSale}</h1>
               </div>
             </div>
             <div class="u-align-center u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
                 <h1 class="u-align-left u-hover-feature u-text u-text-body-alt-color u-text-default u-text-6">Оборот</h1>
-                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-7">12437</h1>
+                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-7">${sumSaleMoney} р.</h1>
               </div>
             </div>
           </div>
         </div>
-        <p class="u-large-text u-text u-text-body-alt-color u-text-variant u-text-8">Here are my favorite travel and adventure quotes, paired with images from my journeys around the world. </p>
-        <a href="https://nicepage.com/c/pricing-html-templates" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Узнать больше</a>
+        <p class="u-large-text u-text u-text-body-alt-color u-text-variant u-text-8">Это хороший день</p>
+        <a href="/FalconFamilyShop/data#carousel_de3a" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Узнать больше</a>
         <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9"> Товар дня</h1>
-        <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-10">Наименование </h1>
+        <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-10">${productPopular.subject} (арт. ${productPopular.supplierArticle})</h1>
         <div class="u-expanded-width u-list u-list-2">
           <div class="u-repeater u-repeater-2">
             <div class="u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-container-layout-4">
                 <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-11">Заказали</h1>
-                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-12">6</h1>
+                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-12">${productPopular.order}</h1>
               </div>
             </div>
             <div class="u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-container-layout-5">
                 <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-13">Купили</h1>
-                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-14">13</h1>
+                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-14">${productPopular.sale}</h1>
               </div>
             </div>
           </div>
         </div>
         <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-15">Товаров на складе на сумму</h1>
-        <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-16">336549</h1>
+        <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-16">${total} р.</h1>
       </div>
 
 
@@ -146,30 +146,14 @@
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
-              <tr style="height: 65px;">
-                <td class="u-table-cell">Row 1</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell"></td>
-              </tr>
-              <tr style="height: 65px;">
-                <td class="u-table-cell">Row 2</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell"></td>
-              </tr>
-              <tr style="height: 65px;">
-                <td class="u-table-cell">Row 3</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell"></td>
-              </tr>
-              <tr style="height: 65px;">
-                <td class="u-table-cell">Row 4</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell"></td>
-              </tr>
+                <c:forEach var="count" items="${arrayList}">
+                    <tr style="height: 65px;">
+                        <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                        <td class="u-table-cell">${count.order}</td>
+                        <td class="u-table-cell">${count.sale}</td>
+                        <td class="u-table-cell">0</td>
+                    </tr>
+                </c:forEach>
             </tbody>
           </table>
         </div>
@@ -181,50 +165,28 @@
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
           <table class="u-table-entity u-table-entity-1">
             <colgroup>
-              <col width="20%">
-              <col width="20%">
-              <col width="20%">
-              <col width="20%">
-              <col width="20%">
+              <col width="25%">
+              <col width="25%">
+              <col width="25%">
+              <col width="25%">
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
                 <th class="u-table-cell">Наименование</th>
-                <th class="u-table-cell">Артикул</th>
                 <th class="u-table-cell">Остаток</th>
                 <th class="u-table-cell">В пути</th>
                 <th class="u-table-cell">Прибыль</th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
-              <tr style="height: 65px;">
-                <td class="u-table-cell">Row 1</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell"></td>
-              </tr>
-              <tr style="height: 65px;">
-                <td class="u-table-cell">Row 2</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell"></td>
-              </tr>
-              <tr style="height: 65px;">
-                <td class="u-table-cell">Row 3</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell"></td>
-              </tr>
-              <tr style="height: 65px;">
-                <td class="u-table-cell">Row 4</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell">Description</td>
-                <td class="u-table-cell"></td>
-              </tr>
+              <c:forEach var="count" items="${stock}">
+                <tr style="height: 65px;">
+                    <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                    <td class="u-table-cell">${count.quantity}</td>
+                    <td class="u-table-cell">${count.inWayToClient}</td>
+                    <td class="u-table-cell">${count.total}</td>
+                </tr>
+              </c:forEach>
             </tbody>
           </table>
         </div>
@@ -325,16 +287,14 @@
             </a>
           </div>
           <div class="u-nav-container">
-            <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="SOKOL0VE.html">SOKOL0VE</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="UPDATA.html">UPDATA</a>
+            <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data">SOKOL0VE</a>
 </li></ul>
           </div>
           <div class="u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="SOKOL0VE.html">SOKOL0VE</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="UPDATA.html">UPDATA</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data">SOKOL0VE</a>
 </li></ul>
               </div>
             </div>
