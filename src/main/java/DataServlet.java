@@ -68,30 +68,35 @@ public class DataServlet extends HttpServlet {
 
         for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
             boolean coincidence = false;
-            if (products.isEmpty()){
-                products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
+            String s = jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString();
+            s = s.substring(0,10);
+            if (s.equals(URLRequestResponse.getDataCurrent())) {
+                if (products.isEmpty()) {
+                    products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
-            } else {
-                for (ItemShop itemShopCurrent : products) {
-                    if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
-                        itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
-                        itemShopCurrent.setForPay(String.valueOf(Float.parseFloat(itemShopCurrent.getForPay()) + Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())));
-                        coincidence = true;
+                } else {
+                    for (ItemShop itemShopCurrent : products) {
+                        if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
+                            itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
+                            itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
+                            itemShopCurrent.setForPay(String.valueOf(Float.parseFloat(itemShopCurrent.getForPay()) + Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())));
+                            coincidence = true;
+                        }
                     }
-                }
-                if (!coincidence) {
-                    products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
+                    if (!coincidence) {
+                        products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
+                    }
                 }
             }
         }
@@ -112,27 +117,32 @@ public class DataServlet extends HttpServlet {
 
         for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
             boolean coincidence = false;
-            if (products.isEmpty()){
-                products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
+            String s = jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString();
+            s = s.substring(0,10);
+            if (s.equals(URLRequestResponse.getDataCurrent())) {
+                if (products.isEmpty()){
+                    products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("oblast").toString(),
                         jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
-            } else {
-                for (ItemShop itemShopCurrent : products) {
-                    if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
-                        itemShopCurrent.setOrder(itemShopCurrent.getOrder() + 1);
-                        coincidence = true;
+                } else {
+                    for (ItemShop itemShopCurrent : products) {
+                        if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
+                            itemShopCurrent.setOrder(itemShopCurrent.getOrder() + 1);
+                            itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
+                            coincidence = true;
+                        }
                     }
-                }
-                if (!coincidence) {
-                    products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
+                    if (!coincidence) {
+                        products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("oblast").toString(),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
+                    }
                 }
             }
         }
@@ -182,8 +192,12 @@ public class DataServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        products.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
-        ItemShop productPopular = products.get(0);
+        ItemShop productPopular = null;
+        if (!products.isEmpty()) {
+            products.sort((o1, o2) -> o2.getRating() - o1.getRating());
+            productPopular = products.get(0);
+        }
+
         int sumSale = 0;
         int sumOrder = 0;
         int sumSaleMoney = 0;
@@ -192,7 +206,6 @@ public class DataServlet extends HttpServlet {
             sumSale = sumSale + ishop.getSale();
             sumOrder = sumOrder + ishop.getOrder();
             String forPay = ishop.getForPay();
-            System.out.println(forPay);
             sumSaleMoney = (int) (sumSaleMoney + Float.parseFloat(forPay));
         }
 

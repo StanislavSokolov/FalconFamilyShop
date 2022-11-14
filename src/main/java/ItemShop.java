@@ -15,6 +15,7 @@ public class ItemShop {
         this.date = date;
 
         this.order = 1;
+        this.rating = 1;
     }
 
     public String getOblast() {
@@ -29,6 +30,15 @@ public class ItemShop {
 
     private int sale = 0;
     private int order = 0;
+    private int rating = 0;
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
     public int getSale() {
         return sale;
@@ -56,6 +66,7 @@ public class ItemShop {
         this.date = date;
 
         this.sale = 1;
+        this.rating = 1;
     }
 
     public String getSubject() {

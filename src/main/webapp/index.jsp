@@ -31,7 +31,7 @@
   </head>
   <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="https://www.wildberries.ru/seller/371119">SOKOL0VE</a>
+          <a href="/FalconFamilyShop/data">SOKOL0VE</a>
         </h3>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
