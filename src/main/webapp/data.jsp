@@ -135,14 +135,14 @@
               <col width="25%">
               <col width="25%">
               <col width="25%">
-              <col width="25.000000000000007%">
+              <col width="25%">
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
-                <th class="u-table-cell">Наименование</th>
-                <th class="u-table-cell">Заказали</th>
-                <th class="u-table-cell">Купили</th>
-                <th class="u-table-cell">Вернули</th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=name">Наименование</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=order">Заказали</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=sale">Купили</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=return">Вернули</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
@@ -172,10 +172,10 @@
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
-                <th class="u-table-cell">Наименование</th>
-                <th class="u-table-cell">Остаток</th>
-                <th class="u-table-cell">В пути</th>
-                <th class="u-table-cell">Прибыль</th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=name">Наименование</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=remain">Остаток</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=ontheway">В пути</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=profit">Прибыль</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
