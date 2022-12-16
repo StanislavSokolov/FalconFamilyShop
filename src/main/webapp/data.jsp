@@ -183,7 +183,7 @@
                 <tr style="height: 65px;">
                     <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
                     <td class="u-table-cell">${count.quantity}</td>
-                    <td class="u-table-cell">${count.inWayToClient}</td>
+                    <td class="u-table-cell">${count.quantityFull - count.quantity}</td>
                     <td class="u-table-cell">${count.total}</td>
                 </tr>
               </c:forEach>

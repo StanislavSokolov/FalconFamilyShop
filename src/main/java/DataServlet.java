@@ -69,7 +69,7 @@ public class DataServlet extends HttpServlet {
             if (category.equals("stock")) {
                 if (value.equals("name")) stockPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
                 if (value.equals("remain")) stockPrev.sort((o1, o2) -> o2.getQuantity() - o1.getQuantity());
-                if (value.equals("ontheway")) stockPrev.sort((o1, o2) -> o2.getQuantityFull() - o1.getQuantityFull());
+                if (value.equals("ontheway")) stockPrev.sort((o1, o2) -> (o2.getQuantityFull() - o2.getQuantity()) - (o1.getQuantityFull() - o1.getQuantity()));
                 if (value.equals("profit")) stockPrev.sort((o1, o2) -> o2.getTotal() - o1.getTotal());
             }
             int total = 0;
@@ -221,8 +221,6 @@ public class DataServlet extends HttpServlet {
                     stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
                             parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
                             parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
-                            parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("inWayToClient").toString()),
-                            parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("inWayFromClient").toString()),
                             parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
                             jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
                 } else {
@@ -230,8 +228,6 @@ public class DataServlet extends HttpServlet {
                         if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
                             productCurrent.setQuantity(productCurrent.getQuantity() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()));
                             productCurrent.setQuantityFull(productCurrent.getQuantityFull() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()));
-                            productCurrent.setInWayToClient(productCurrent.getInWayToClient() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("inWayToClient").toString()));
-                            productCurrent.setInWayFromClient(productCurrent.getInWayFromClient() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("inWayFromClient").toString()));
                             coincidence = true;
                         }
                     }
@@ -239,8 +235,6 @@ public class DataServlet extends HttpServlet {
                         stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
                                 parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
                                 parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
-                                parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("inWayToClient").toString()),
-                                parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("inWayFromClient").toString()),
                                 parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
                                 jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
                     }

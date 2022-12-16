@@ -2,8 +2,6 @@ public class Product {
     private String supplierArticle = "";
     private int quantity = 0;
     private int quantityFull = 0;
-    private int inWayToClient = 0;
-    private int inWayFromClient = 0;
     private int nmId = 0;
     private String subject = "";
     private int price = 0;
@@ -19,12 +17,10 @@ public class Product {
         this.total = total;
     }
 
-    public Product(String supplierArticle, int quantity, int quantityFull, int inWayToClient, int inWayFromClient, int nmId, String subject) {
+    public Product(String supplierArticle, int quantity, int quantityFull, int nmId, String subject) {
         this.supplierArticle = supplierArticle;
         this.quantity = quantity;
         this.quantityFull = quantityFull;
-        this.inWayToClient = inWayToClient;
-        this.inWayFromClient = inWayFromClient;
         this.nmId = nmId;
         this.subject = subject;
     }
@@ -35,14 +31,6 @@ public class Product {
 
     public void setQuantityFull(int quantityFull) {
         this.quantityFull = quantityFull;
-    }
-
-    public void setInWayToClient(int inWayToClient) {
-        this.inWayToClient = inWayToClient;
-    }
-
-    public void setInWayFromClient(int inWayFromClient) {
-        this.inWayFromClient = inWayFromClient;
     }
 
     public void setPromoCode(int promoCode) {
@@ -83,14 +71,6 @@ public class Product {
 
     public int getQuantityFull() {
         return quantityFull;
-    }
-
-    public int getInWayToClient() {
-        return inWayToClient;
-    }
-
-    public int getInWayFromClient() {
-        return inWayFromClient;
     }
 
     public int getNmId() {
