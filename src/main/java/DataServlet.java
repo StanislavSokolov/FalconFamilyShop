@@ -64,13 +64,15 @@ public class DataServlet extends HttpServlet {
                 if (value.equals("name")) productsPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
                 if (value.equals("order")) productsPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
                 if (value.equals("sale")) productsPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
-                if (value.equals("return")) productsPrev.sort((o1, o2) -> o2.getRating() - o1.getRating());
+                if (value.equals("forpay")) productsPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
             }
             if (category.equals("stock")) {
                 if (value.equals("name")) stockPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
                 if (value.equals("remain")) stockPrev.sort((o1, o2) -> o2.getQuantity() - o1.getQuantity());
                 if (value.equals("ontheway")) stockPrev.sort((o1, o2) -> (o2.getQuantityFull() - o2.getQuantity()) - (o1.getQuantityFull() - o1.getQuantity()));
                 if (value.equals("profit")) stockPrev.sort((o1, o2) -> o2.getTotal() - o1.getTotal());
+                if (value.equals("price")) stockPrev.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
+                if (value.equals("discount")) stockPrev.sort((o1, o2) -> o2.getDiscount() - o1.getDiscount());
             }
             int total = 0;
 

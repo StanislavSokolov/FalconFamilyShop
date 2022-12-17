@@ -142,7 +142,7 @@
                 <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=name">Наименование</a></th>
                 <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=order">Заказали</a></th>
                 <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=sale">Купили</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=return">Вернули</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=forpay">Вознаграждение</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
@@ -151,7 +151,7 @@
                         <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
                         <td class="u-table-cell">${count.order}</td>
                         <td class="u-table-cell">${count.sale}</td>
-                        <td class="u-table-cell">0</td>
+                        <td class="u-table-cell">${count.forPay}</td>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -166,9 +166,11 @@
           <table class="u-table-entity u-table-entity-1">
             <colgroup>
               <col width="25%">
-              <col width="25%">
-              <col width="25%">
-              <col width="25%">
+              <col width="15%">
+              <col width="15%">
+              <col width="15%">
+              <col width="15%">
+              <col width="15%">
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
@@ -176,6 +178,8 @@
                 <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=remain">Остаток</a></th>
                 <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=ontheway">В пути</a></th>
                 <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=profit">Прибыль</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=price">Цена</a></th>
+                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=discount">Скидка</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
@@ -185,6 +189,8 @@
                     <td class="u-table-cell">${count.quantity}</td>
                     <td class="u-table-cell">${count.quantityFull - count.quantity}</td>
                     <td class="u-table-cell">${count.total}</td>
+                    <td class="u-table-cell">${count.price}</td>
+                    <td class="u-table-cell">${count.discount}</td>
                 </tr>
               </c:forEach>
             </tbody>
