@@ -135,7 +135,7 @@ public class DataServlet extends HttpServlet {
                         products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
                                 jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
                                 jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString(),
+                                String.valueOf(Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9),
                                 jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
                                 jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
                                 jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
@@ -144,7 +144,7 @@ public class DataServlet extends HttpServlet {
                             if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
                                 itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
                                 itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
-                                itemShopCurrent.setForPay(String.valueOf(Float.parseFloat(itemShopCurrent.getForPay()) + Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())));
+                                itemShopCurrent.setForPay(String.valueOf(Float.parseFloat(itemShopCurrent.getForPay()) + Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9));
                                 coincidence = true;
                             }
                         }
@@ -152,7 +152,7 @@ public class DataServlet extends HttpServlet {
                             products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
                                     jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
                                     jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString(),
+                                    String.valueOf(Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9),
                                     jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
                                     jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
                                     jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
