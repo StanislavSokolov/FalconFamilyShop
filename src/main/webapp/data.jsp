@@ -35,7 +35,7 @@
   </head>
   <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="/FalconFamilyShop/data">SOKOL0VE</a>
+          <a href="/data">SOKOL0VE</a>
         </h3>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
@@ -46,18 +46,18 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/FalconFamilyShop/data#sec-9aa4" data-page-id="36011200">Цена</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#sec-9aa4" data-page-id="36011200">Цена</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data#sec-9aa4" data-page-id="36011200">Цена</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#sec-9aa4" data-page-id="36011200">Цена</a>
 </li></ul>
               </div>
             </div>
@@ -91,7 +91,7 @@
           </div>
         </div>
         <p class="u-large-text u-text u-text-body-alt-color u-text-variant u-text-8">Это хороший день</p>
-        <a href="/FalconFamilyShop/data#carousel_de3a" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Узнать больше</a>
+        <a href="/data#carousel_de3a" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Узнать больше</a>
         <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9"> Товар дня</h1>
         <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-10">${productPopular.subject} (арт. ${productPopular.supplierArticle})</h1>
         <div class="u-expanded-width u-list u-list-2">
@@ -139,10 +139,10 @@
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=name">Наименование</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=order">Заказали</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=sale">Купили</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stat&value=forpay">Вознаграждение</a></th>
+                <th class="u-table-cell"><a href="/data?category=stat&value=name">Наименование</a></th>
+                <th class="u-table-cell"><a href="/data?category=stat&value=order">Заказали</a></th>
+                <th class="u-table-cell"><a href="/data?category=stat&value=sale">Купили</a></th>
+                <th class="u-table-cell"><a href="/data?category=stat&value=forpay">Вознаграждение</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
@@ -174,12 +174,12 @@
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=name">Наименование</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=remain">Остаток</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=ontheway">В пути</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=profit">Прибыль</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=price">Цена</a></th>
-                <th class="u-table-cell"><a href="/FalconFamilyShop/data?category=stock&value=discount">Скидка</a></th>
+                <th class="u-table-cell"><a href="/data?category=stock&value=name">Наименование</a></th>
+                <th class="u-table-cell"><a href="/data?category=stock&value=remain">Остаток</a></th>
+                <th class="u-table-cell"><a href="/data?category=stock&value=ontheway">В пути</a></th>
+                <th class="u-table-cell"><a href="/data?category=stock&value=profit">Прибыль</a></th>
+                <th class="u-table-cell"><a href="/data?category=stock&value=price">Цена</a></th>
+                <th class="u-table-cell"><a href="/data?category=stock&value=discount">Скидка</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
@@ -293,14 +293,14 @@
             </a>
           </div>
           <div class="u-nav-container">
-            <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data">SOKOL0VE</a>
+            <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data">SOKOL0VE</a>
 </li></ul>
           </div>
           <div class="u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/FalconFamilyShop/data">SOKOL0VE</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data">SOKOL0VE</a>
 </li></ul>
               </div>
             </div>
