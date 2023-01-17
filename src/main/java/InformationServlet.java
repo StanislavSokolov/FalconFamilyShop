@@ -1,0 +1,101 @@
+import org.json.JSONObject;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
+
+@WebServlet("/information")
+public class InformationServlet extends HttpServlet {
+
+    ArrayList<Day> daysPrev;
+
+    @Override
+    protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        httpServletRequest.setCharacterEncoding("UTF-8");
+        httpServletResponse.setContentType("text/html");
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//        boolean authorizationStatus = false;
+//        String quantity = "0";
+//        Cookie[] cookies = httpServletRequest.getCookies();
+//
+//        for (Cookie cookie : cookies) {
+//            if (cookie.getName().equals("quantity")) {
+//                authorizationStatus = true;
+//                quantity = cookie.getValue();
+//            }
+//        }
+//
+//        if (!authorizationStatus) {
+//            Cookie cookie1 = new Cookie("quantity", quantity);
+//            cookie1.setMaxAge(60*60*24*90);
+//            httpServletResponse.addCookie(cookie1);
+//        }
+//
+//        httpServletRequest.setAttribute("quantity", quantity);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        String category = httpServletRequest.getParameter("category");
+        String value = httpServletRequest.getParameter("value");
+
+        if ((category != null) & (value != null)) {
+            ItemShop productPopular = null;
+            if (!daysPrev.isEmpty()) {
+            }
+            if (category.equals("info")) {
+            }
+
+            httpServletRequest.setAttribute("arrayListDay", daysPrev);
+            httpServletRequest.setAttribute("test", "daysPrev");
+        } else {
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            ArrayList<Day> allTime = SQL.upDate();
+            ArrayList<Day> week = new ArrayList<>();
+            System.out.println(allTime.size());
+            for (int i = allTime.size() - 7; i < allTime.size(); i++) {
+                week.add(allTime.get(i));
+            }
+            System.out.println(week.get(0).getSumSaleMoney());
+//            ArrayList<Day> month = new ArrayList<>();
+//            for (int i = allTime.size() - 28; i < allTime.size(); i++) {
+//                week.add(allTime.get(i));
+//            }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            httpServletRequest.setAttribute("arrayListWeek", week);
+//            httpServletRequest.setAttribute("arrayListMonth", month);
+//            httpServletRequest.setAttribute("test", "daysPrev");
+
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        httpServletRequest.getRequestDispatcher("information.jsp").forward(httpServletRequest, httpServletResponse);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+        super.doPost(httpServletRequest, httpServletResponse);
+    }
+}

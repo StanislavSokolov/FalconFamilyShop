@@ -48,7 +48,7 @@
           <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#sec-9aa4" data-page-id="36011200">Цена</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information" data-page-id="36011200">Информация</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -57,7 +57,7 @@
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#sec-9aa4" data-page-id="36011200">Цена</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information" data-page-id="36011200">Информация</a>
 </li></ul>
               </div>
             </div>

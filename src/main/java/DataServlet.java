@@ -114,51 +114,52 @@ public class DataServlet extends HttpServlet {
             URL generetedURL;
             String response = null;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             generetedURL = URLRequestResponse.generateURL(2, 6, "token");
             try {
                 response = URLRequestResponse.getResponseFromURL(generetedURL, "token");
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
+                if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
+                    JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
+                    System.out.println(jsonObject.toString());
 
-            JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
-            System.out.println(jsonObject.toString());
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                boolean coincidence = false;
-                String s = jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString();
-                s = s.substring(0, 10);
-                if (s.equals(URLRequestResponse.getDataCurrent())) {
-                    if (products.isEmpty()) {
-                        products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                String.valueOf((int) (Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
-                    } else {
-                        for (ItemShop itemShopCurrent : products) {
-                            if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
-                                itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
-                                itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
-                                itemShopCurrent.setForPay(String.valueOf((int) (Float.parseFloat(itemShopCurrent.getForPay()) + Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)));
-                                coincidence = true;
+                    for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
+                        boolean coincidence = false;
+                        String s = jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString();
+                        s = s.substring(0, 10);
+                        if (s.equals(URLRequestResponse.getDataCurrent())) {
+                            if (products.isEmpty()) {
+                                products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
+                                        String.valueOf((int) (Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
+                            } else {
+                                for (ItemShop itemShopCurrent : products) {
+                                    if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
+                                        itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
+                                        itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
+                                        itemShopCurrent.setForPay(String.valueOf((int) (Float.parseFloat(itemShopCurrent.getForPay()) + Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)));
+                                        coincidence = true;
+                                    }
+                                }
+                                if (!coincidence) {
+                                    products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
+                                            String.valueOf((int) (Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
+                                }
                             }
-                        }
-                        if (!coincidence) {
-                            products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                    String.valueOf((int) (Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
                         }
                     }
                 }
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
             }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -166,45 +167,44 @@ public class DataServlet extends HttpServlet {
             generetedURL = URLRequestResponse.generateURL(2, 7, "token");
             try {
                 response = URLRequestResponse.getResponseFromURL(generetedURL, "token");
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
+                if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
+                    JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
+                    System.out.println(jsonObject.toString());
 
-            jsonObject = new JSONObject("{\"price\":" + response + "}");
-            System.out.println(jsonObject.toString());
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                boolean coincidence = false;
-                String s = jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString();
-                s = s.substring(0, 10);
-                if (s.equals(URLRequestResponse.getDataCurrent())) {
-                    if (products.isEmpty()) {
-                        products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("oblast").toString(),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
-                    } else {
-                        for (ItemShop itemShopCurrent : products) {
-                            if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
-                                itemShopCurrent.setOrder(itemShopCurrent.getOrder() + 1);
-                                itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
-                                coincidence = true;
+                    for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
+                        boolean coincidence = false;
+                        String s = jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString();
+                        s = s.substring(0, 10);
+                        if (s.equals(URLRequestResponse.getDataCurrent())) {
+                            if (products.isEmpty()) {
+                                products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("oblast").toString(),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
+                            } else {
+                                for (ItemShop itemShopCurrent : products) {
+                                    if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
+                                        itemShopCurrent.setOrder(itemShopCurrent.getOrder() + 1);
+                                        itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
+                                        coincidence = true;
+                                    }
+                                }
+                                if (!coincidence) {
+                                    products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("oblast").toString(),
+                                            jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
+                                }
                             }
-                        }
-                        if (!coincidence) {
-                            products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("oblast").toString(),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
                         }
                     }
                 }
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
             }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,36 +212,37 @@ public class DataServlet extends HttpServlet {
             generetedURL = URLRequestResponse.generateURL(2, 5, "token");
             try {
                 response = URLRequestResponse.getResponseFromURL(generetedURL);
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
-
-            jsonObject = new JSONObject("{\"price\":" + response + "}");
-            for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                boolean coincidence = false;
-                if (stock.isEmpty()) {
-                    stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                            parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
-                            parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
-                            parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
-                            jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
-                } else {
-                    for (Product productCurrent : stock) {
-                        if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
-                            productCurrent.setQuantity(productCurrent.getQuantity() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()));
-                            productCurrent.setQuantityFull(productCurrent.getQuantityFull() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()));
-                            coincidence = true;
+                if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
+                    JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
+                    for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
+                        boolean coincidence = false;
+                        if (stock.isEmpty()) {
+                            stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
+                                    parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
+                                    parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
+                                    parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
+                                    jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
+                        } else {
+                            for (Product productCurrent : stock) {
+                                if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
+                                    productCurrent.setQuantity(productCurrent.getQuantity() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()));
+                                    productCurrent.setQuantityFull(productCurrent.getQuantityFull() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()));
+                                    coincidence = true;
+                                }
+                            }
+                            if (!coincidence) {
+                                stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
+                                        parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
+                                        parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
+                                        parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
+                                        jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
+                            }
+                            coincidence = false;
                         }
                     }
-                    if (!coincidence) {
-                        stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
-                                parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
-                                parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
-                                jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
-                    }
-                    coincidence = false;
                 }
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
             }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -256,11 +257,13 @@ public class DataServlet extends HttpServlet {
             int sumOrder = 0;
             int sumSaleMoney = 0;
 
-            for (ItemShop ishop : products) {
-                sumSale = sumSale + ishop.getSale();
-                sumOrder = sumOrder + ishop.getOrder();
-                String forPay = ishop.getForPay();
-                sumSaleMoney = (int) (sumSaleMoney + Float.parseFloat(forPay));
+            if (!products.isEmpty()) {
+                for (ItemShop ishop : products) {
+                    sumSale = sumSale + ishop.getSale();
+                    sumOrder = sumOrder + ishop.getOrder();
+                    String forPay = ishop.getForPay();
+                    sumSaleMoney = (int) (sumSaleMoney + Float.parseFloat(forPay));
+                }
             }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -268,20 +271,23 @@ public class DataServlet extends HttpServlet {
             generetedURL = URLRequestResponse.generateURL(2, 1, "token");
             try {
                 response = URLRequestResponse.getResponseFromURL(generetedURL, "token");
+                if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
+                    System.out.println(response);
+                    JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
+                    for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
+                        for (Product productCurrent : stock) {
+                            if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
+                                productCurrent.setPrice(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("price").toString()));
+                                productCurrent.setDiscount(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("discount").toString()));
+                                productCurrent.setPromoCode(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("promoCode").toString()));
+                            }
+                        }
+                    }
+                }
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
-            System.out.println(response);
-            jsonObject = new JSONObject("{\"price\":" + response + "}");
-            for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                for (Product productCurrent : stock) {
-                    if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
-                        productCurrent.setPrice(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("price").toString()));
-                        productCurrent.setDiscount(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("discount").toString()));
-                        productCurrent.setPromoCode(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("promoCode").toString()));
-                    }
-                }
-            }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
