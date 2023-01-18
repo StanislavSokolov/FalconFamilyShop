@@ -23,19 +23,15 @@
                                    function drawChart() {
                                            var data = google.visualization.arrayToDataTable([
                                              ['Дата', 'Купили', 'Заказали'],
-                                             ['${arrayListWeek.get(0).date}', ${arrayListWeek.get(0).sumSale}, ${arrayListWeek.get(0).sumOrder}],
-                                             ['${arrayListWeek.get(1).date}', ${arrayListWeek.get(1).sumSale}, ${arrayListWeek.get(1).sumOrder}],
-                                             ['${arrayListWeek.get(2).date}', ${arrayListWeek.get(2).sumSale}, ${arrayListWeek.get(2).sumOrder}],
-                                             ['${arrayListWeek.get(3).date}', ${arrayListWeek.get(3).sumSale}, ${arrayListWeek.get(3).sumOrder}],
-                                             ['${arrayListWeek.get(4).date}', ${arrayListWeek.get(4).sumSale}, ${arrayListWeek.get(4).sumOrder}],
-                                             ['${arrayListWeek.get(5).date}', ${arrayListWeek.get(5).sumSale}, ${arrayListWeek.get(5).sumOrder}],
-                                             ['${arrayListWeek.get(6).date}', ${arrayListWeek.get(6).sumSale}, ${arrayListWeek.get(6).sumOrder}],
+                                             <c:forEach var="day" items="${arrayListWeek}">
+                                                ['${day.date}', ${day.sumSale}, ${day.sumOrder}],
+                                             </c:forEach>
                                            ]);
 
                                            var options = {
                                              chart: {
-                                               title: 'Company Performance',
-                                               subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                                               title: 'WB',
+                                               subtitle: 'График заказов и продаж за текущую неделю',
                                              }
                                            };
 
@@ -48,19 +44,15 @@
                                                        function drawChart1() {
                                                                var data = google.visualization.arrayToDataTable([
                                                                  ['Дата', 'Оборот'],
-                                                                 ['${arrayListWeek.get(0).date}', ${arrayListWeek.get(0).sumSaleMoney}],
-                                                                 ['${arrayListWeek.get(1).date}', ${arrayListWeek.get(1).sumSaleMoney}],
-                                                                 ['${arrayListWeek.get(2).date}', ${arrayListWeek.get(2).sumSaleMoney}],
-                                                                 ['${arrayListWeek.get(3).date}', ${arrayListWeek.get(3).sumSaleMoney}],
-                                                                 ['${arrayListWeek.get(4).date}', ${arrayListWeek.get(4).sumSaleMoney}],
-                                                                 ['${arrayListWeek.get(5).date}', ${arrayListWeek.get(5).sumSaleMoney}],
-                                                                 ['${arrayListWeek.get(6).date}', ${arrayListWeek.get(6).sumSaleMoney}],
+                                                                 <c:forEach var="day" items="${arrayListWeek}">
+                                                                 ['${day.date}', ${day.sumSaleMoney}],
+                                                                 </c:forEach>
                                                                ]);
 
                                                                var options = {
                                                                  chart: {
-                                                                   title: 'Company Performance',
-                                                                   subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                                                                   title: 'WB',
+                                                                   subtitle: 'График вознаграждений за текущую неделю',
                                                                  }
                                                                };
 
@@ -121,8 +113,8 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <h1 class="u-text u-text-body-alt-color u-text-default u-text-1">Информация</h1>
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <div id="air" <div id="air" style="width: 1200px; height: 800px;"></div>></div>
-            <div id="qwerty" <div id="air" style="width: 1200px; height: 800px;"></div>></div>
+            <div id="air" <div id="air" style="width: 400px; height: 300px;"></div>></div>
+            <div id="qwerty" <div id="air" style="width: 400px; height: 300px;"></div>></div>
           <!-- <table class="u-table-entity u-table-entity-1">
             <colgroup>
               <col width="15%">

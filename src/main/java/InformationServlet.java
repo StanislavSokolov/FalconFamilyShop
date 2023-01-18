@@ -65,11 +65,14 @@ public class InformationServlet extends HttpServlet {
 
             ArrayList<Day> allTime = SQL.upDate();
             ArrayList<Day> week = new ArrayList<>();
-            System.out.println(allTime.size());
-            for (int i = allTime.size() - 7; i < allTime.size(); i++) {
+
+            int countStart = 7;
+
+            if (allTime.size() < countStart) countStart = allTime.size();
+            for (int i = allTime.size() - countStart; i < allTime.size(); i++) {
                 week.add(allTime.get(i));
             }
-            System.out.println(week.get(0).getSumSaleMoney());
+//            System.out.println(week.get(0).getSumSaleMoney());
 //            ArrayList<Day> month = new ArrayList<>();
 //            for (int i = allTime.size() - 28; i < allTime.size(); i++) {
 //                week.add(allTime.get(i));
@@ -81,7 +84,8 @@ public class InformationServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            httpServletRequest.setAttribute("arrayListWeek", week);
+            if (!week.isEmpty()) httpServletRequest.setAttribute("arrayListWeek", week);
+//            httpServletRequest.setAttribute("arrayListWeek", week);
 //            httpServletRequest.setAttribute("arrayListMonth", month);
 //            httpServletRequest.setAttribute("test", "daysPrev");
 
