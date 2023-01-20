@@ -17,8 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import static java.lang.Integer.parseInt;
 
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
+@WebServlet("/wb")
+public class WBServlet extends HttpServlet {
+
+    private final String TOKEN1 = "";
+    private final String TOKEN2 = "";
 
     ArrayList<ItemShop> productsPrev;
     ArrayList<Product> stockPrev;
@@ -101,6 +104,11 @@ public class DataServlet extends HttpServlet {
 
             httpServletRequest.setAttribute("stock", stockPrev);
             httpServletRequest.setAttribute("total", total);
+
+            httpServletRequest.setAttribute("shop1", "wb");
+            httpServletRequest.setAttribute("shop2", "ozon");
+            httpServletRequest.setAttribute("title1", "WB");
+            httpServletRequest.setAttribute("title2", "OZON");
         } else {
 
 
@@ -116,9 +124,9 @@ public class DataServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            generetedURL = URLRequestResponse.generateURL(2, 6, "token");
+            generetedURL = URLRequestResponse.generateURL(2, 6, TOKEN1);
             try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, "token");
+                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKEN1);
                 if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
                     JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
                     System.out.println(jsonObject.toString());
@@ -164,9 +172,9 @@ public class DataServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            generetedURL = URLRequestResponse.generateURL(2, 7, "token");
+            generetedURL = URLRequestResponse.generateURL(2, 7, TOKEN1);
             try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, "token");
+                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKEN1);
                 if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
                     JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
                     System.out.println(jsonObject.toString());
@@ -209,7 +217,7 @@ public class DataServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            generetedURL = URLRequestResponse.generateURL(2, 5, "token");
+            generetedURL = URLRequestResponse.generateURL(2, 5, TOKEN1);
             try {
                 response = URLRequestResponse.getResponseFromURL(generetedURL);
                 if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
@@ -268,9 +276,9 @@ public class DataServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            generetedURL = URLRequestResponse.generateURL(2, 1, "token");
+            generetedURL = URLRequestResponse.generateURL(2, 1, TOKEN2);
             try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, "token");
+                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKEN2);
                 if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
                     System.out.println(response);
                     JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
@@ -323,6 +331,11 @@ public class DataServlet extends HttpServlet {
 
             httpServletRequest.setAttribute("stock", stock);
             httpServletRequest.setAttribute("total", total);
+
+            httpServletRequest.setAttribute("shop1", "wb");
+            httpServletRequest.setAttribute("shop2", "ozon");
+            httpServletRequest.setAttribute("title1", "WB");
+            httpServletRequest.setAttribute("title2", "OZON");
 
         }
 

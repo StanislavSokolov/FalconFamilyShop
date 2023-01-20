@@ -10,7 +10,7 @@
     <meta name="keywords" content="Travel, Start Your Jorney, Discount 10-30% Off, Why Choose Us">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Обновите данные</title>
+    <title>Выберете магазин</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="UPDATA.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -26,45 +26,16 @@
 		"logo": "images/default-logo.png"
 }</script>
     <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="UPDATA">
+    <meta property="og:title" content="FalconFamilyShop">
     <meta property="og:type" content="website">
   </head>
-  <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
-        <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="/data">SOKOL0VE</a>
-        </h3>
-        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
-          <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
-            <a class="u-btn-text u-button-style u-nav-link u-text-body-alt-color" href="#" style="padding: 4px 24px; font-size: calc(1em + 8px);">
-              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 302 302" style="undefined"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-a760"></use></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-a760" x="0px" y="0px" viewBox="0 0 302 302" style="enable-background:new 0 0 302 302;" xml:space="preserve" class="u-svg-content"><g><rect y="36" width="302" height="30"></rect><rect y="236" width="302" height="30"></rect><rect y="136" width="302" height="30"></rect>
-</g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
-            </a>
-          </div>
-          <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information" data-page-id="36011200">Информация</a>
-</li></ul>
-          </div>
-          <div class="u-custom-menu u-nav-container-collapse">
-            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-              <div class="u-inner-container-layout u-sidenav-overflow">
-                <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information" data-page-id="36011200">Информация</a>
-</li></ul>
-              </div>
-            </div>
-            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-          </div>
-        </nav>
-      </div></header>
+  <body class="u-body u-overlap u-xl-mode">
+
     <section class="skrollable u-clearfix u-image u-section-1" src="" id="sec-59a1">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-body-alt-color u-title u-text-1">Обновите данные...</h1>
-        <a href="/data" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Обновить</a>
+        <h1 class="u-text u-text-body-alt-color u-title u-text-1">Выберете магазин</h1>
+        <a href="/wb" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">WB</a>
+        <a href="/ozon" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-2">OZON</a>
       </div>
     </section>
 
@@ -82,14 +53,16 @@
             </a>
           </div>
           <div class="u-nav-container">
-            <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data">SOKOL0VE</a>
+            <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/wb">WB</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/ozon">OZON</a>
 </li></ul>
           </div>
           <div class="u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data">SOKOL0VE</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/wb">WB</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/ozon">OZON</a>
 </li></ul>
               </div>
             </div>

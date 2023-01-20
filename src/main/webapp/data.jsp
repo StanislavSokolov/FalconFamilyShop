@@ -10,7 +10,7 @@
     <meta name="keywords" content="Travel, Start Your Jorney, Discount 10-30% Off, Why Choose Us">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>SOKOL0VE</title>
+    <title>SOKOL0VE ${title1}</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="SOKOL0VE.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -35,7 +35,7 @@
   </head>
   <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="/data">SOKOL0VE</a>
+          <a href="/${shop2}">Перейти на ${title2}</a>
         </h3>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
@@ -46,8 +46,8 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#sec-e0bf" data-page-id="36011200">Склад</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information" data-page-id="36011200">Информация</a>
 </li></ul>
           </div>
@@ -55,8 +55,8 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#sec-e0bf" data-page-id="36011200">Склад</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information" data-page-id="36011200">Информация</a>
 </li></ul>
               </div>
@@ -67,7 +67,7 @@
       </div></header>
     <section class="skrollable u-clearfix u-image u-parallax u-section-1" src="" id="sec-59a1">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-body-alt-color u-title u-text-1">Ваш день</h1>
+        <h1 class="u-text u-text-body-alt-color u-title u-text-1">Ваш день на ${title1}</h1>
         <div class="u-expanded-width u-list u-list-1">
           <div class="u-repeater u-repeater-1">
             <div class="u-align-center u-container-style u-list-item u-repeater-item">
@@ -91,7 +91,7 @@
           </div>
         </div>
         <p class="u-large-text u-text u-text-body-alt-color u-text-variant u-text-8">Это хороший день</p>
-        <a href="/data#carousel_de3a" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Узнать больше</a>
+        <a href="/${shop1}#carousel_de3a" class="u-btn u-btn-round u-button-style u-gradient u-radius-10 u-btn-1">Узнать больше</a>
         <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9"> Товар дня</h1>
         <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-10">${productPopular.subject} (арт. ${productPopular.supplierArticle})</h1>
         <div class="u-expanded-width u-list u-list-2">
@@ -139,10 +139,10 @@
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
-                <th class="u-table-cell"><a href="/data?category=stat&value=name">Наименование</a></th>
-                <th class="u-table-cell"><a href="/data?category=stat&value=order">Заказали</a></th>
-                <th class="u-table-cell"><a href="/data?category=stat&value=sale">Купили</a></th>
-                <th class="u-table-cell"><a href="/data?category=stat&value=forpay">Вознаграждение</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stat&value=name">Наименование</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stat&value=order">Заказали</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stat&value=sale">Купили</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stat&value=forpay">Вознаграждение</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
@@ -174,12 +174,12 @@
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
-                <th class="u-table-cell"><a href="/data?category=stock&value=name">Наименование</a></th>
-                <th class="u-table-cell"><a href="/data?category=stock&value=remain">Остаток</a></th>
-                <th class="u-table-cell"><a href="/data?category=stock&value=ontheway">В пути</a></th>
-                <th class="u-table-cell"><a href="/data?category=stock&value=profit">Прибыль</a></th>
-                <th class="u-table-cell"><a href="/data?category=stock&value=price">Цена</a></th>
-                <th class="u-table-cell"><a href="/data?category=stock&value=discount">Скидка</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=name">Наименование</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=remain">Остаток</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=ontheway">В пути</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=profit">Прибыль</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=price">Цена</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=discount">Скидка</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
@@ -281,32 +281,34 @@
 
 
     <footer class="u-clearfix u-footer u-grey-80" id="sec-9702"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="80" data-image-height="40">
-          <img src="images/default-logo.png" class="u-logo-image u-logo-image-1">
-        </a>
-        <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
-          <div class="menu-collapse">
-            <a class="u-button-style u-nav-link" href="#">
-              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
-              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
-</g></svg>
+            <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="80" data-image-height="40">
+              <img src="images/default-logo.png" class="u-logo-image u-logo-image-1">
             </a>
-          </div>
-          <div class="u-nav-container">
-            <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data">SOKOL0VE</a>
-</li></ul>
-          </div>
-          <div class="u-nav-container-collapse">
-            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-              <div class="u-inner-container-layout u-sidenav-overflow">
-                <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data">SOKOL0VE</a>
-</li></ul>
+            <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+              <div class="menu-collapse">
+                <a class="u-button-style u-nav-link" href="#">
+                  <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+                  <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+    </g></svg>
+                </a>
               </div>
-            </div>
-            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-          </div>
-        </nav>
-      </div></footer>
+              <div class="u-nav-container">
+                <ul class="u-nav u-unstyled"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/wb">WB</a>
+    </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/ozon">OZON</a>
+    </li></ul>
+              </div>
+              <div class="u-nav-container-collapse">
+                <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                  <div class="u-inner-container-layout u-sidenav-overflow">
+                    <div class="u-menu-close"></div>
+                    <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/wb">WB</a>
+    </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/ozon">OZON</a>
+    </li></ul>
+                  </div>
+                </div>
+                <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+              </div>
+            </nav>
+          </div></footer>
   </body>
 </html>
