@@ -17,8 +17,8 @@ import static java.lang.Integer.parseInt;
 @WebServlet("/ozon")
 public class OzonServlet extends HttpServlet {
 
-    private final String TOKEN1 = "";
-    private final String TOKEN2 = "";
+    private final String TOKEN1 = "token";
+    private final String TOKEN2 = "token";
 
     ArrayList<ItemShop> productsPrev;
     ArrayList<Product> stockPrev;
@@ -161,8 +161,9 @@ public class OzonServlet extends HttpServlet {
                 JSONArray jsonArray = (JSONArray) jsonObject5.getJSONArray("result").getJSONObject(i).get("products");
                 JSONObject jsonObject6 = new JSONObject(String.valueOf(jsonObject5.getJSONArray("result").getJSONObject(i).get("analytics_data")));
                 ItemShop itemShop = new ItemShop(jsonArray.getJSONObject(0).get("name").toString(),
-                        "non",
+                        jsonArray.getJSONObject(0).get("offer_id").toString(),
                         jsonArray.getJSONObject(0).get("price").toString(),
+                        String.valueOf((int) (Float.parseFloat(jsonArray.getJSONObject(0).get("price").toString()) * 0.88)),
                         jsonObject6.getString("warehouse_name"),
                         jsonObject6.getString("region") + " (" + jsonObject6.getString("city") + ")",
                         jsonObject5.getJSONArray("result").getJSONObject(i).get("created_at").toString());

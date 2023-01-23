@@ -48,7 +48,7 @@
           <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information" data-page-id="36011200">Информация</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -57,7 +57,7 @@
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information" data-page-id="36011200">Информация</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
               </div>
             </div>
@@ -220,23 +220,29 @@
                           <p class="u-text u-text-default u-text-2">
                             <a class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-link u-button-style u-none u-text-palette-1-base u-btn-1" href="https://yandex.ru/maps/org/logisticheskiy_terminal_mlp_utkina_zavod_korpus_1/100550415199/?ll=30.529526%2C59.864618&amp;z=14.4"> Логистический терминал МЛП Уткина заводь, корпус № 1</a>
                           </p>
-                          <h1 class="u-text u-text-default u-text-3">
-                            <a href="https://yandex.ru/maps/2/saint-petersburg/house/moskovskoye_shosse_153k2/Z0kYcgNlTkIEQFtjfXt5cntkYA==/" title="Санкт-Петербург, Пушкинский район, посёлок Шушары, Московское шоссе, 153, корп. 2 на карте Санкт‑Петербурга" aria-label="Санкт-Петербург, Пушкинский район, посёлок Шушары, Московское шоссе, 153, корп. 2 на карте Санкт‑Петербурга">
-                              <br>
-                              <span class="u-text-palette-1-base">Московское ш., 153, корп. 2, посёлок Шушары</span>
-                            </a>
-                          </h1>
+                          <p class="u-text u-text-default u-text-2">
+                            <a class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-link u-button-style u-none u-text-palette-1-base u-btn-1" href="https://yandex.ru/maps/2/saint-petersburg/house/moskovskoye_shosse_153k2/Z0kYcgNlTkIEQFtjfXt5cntkYA==/">Санкт-Петербург, Пушкинский район, посёлок Шушары, Московское шоссе, 153, корп. 2</a>
+                          </p>
                           <h1 class="u-text u-text-default u-text-palette-1-base u-text-4">24/7</h1>
                         </div>
                       </div>
                       <div class="u-container-style u-layout-cell u-right-cell u-size-30 u-layout-cell-3">
                         <div class="u-container-layout u-container-layout-3">
                           <h1 class="u-text u-text-default u-text-palette-1-base u-text-5">Склад ПЭК</h1>
-                          <h1 class="u-text u-text-default u-text-6">
-                            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-2" href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.434977%2C59.913783&amp;mode=search&amp;sctx=ZAAAAAgBEAAaKAoSCbdhFASPhz5AETfEeM2r7k1AEhIJ9UwvMZbptz8RMuTYeoZwnD8iBgABAgMEBSgKOABAvYIGSAFiK3JlYXJyPXNjaGVtZV9Mb2NhbC9HZW8vRW5hYmxlQmVhdXR5RmlsdGVyPTFqAnJ1nQHNzEw9oAEAqAEAvQGXsb%2BawgGGAcay6bmcBbaPmKUEoPDzg4cB1N%2Bf%2F%2BUCg8TbxM4Bnf%2FbroMB%2FebhnsoCs4eV8agD4tn0lskGgurel%2FgDsviHmdMGwcyYt%2FAEmP3gtE2527%2FboQKTgoGihwOks%2BqP6wHbnovQePjFz%2FKbBafPzfqjAYT82%2FJQhMmzhv8B2bXR7bYE1ODPk%2BgE6gEA8gEA%2BAEAggIR0YHQutC70LDQtCDQn9Ct0JqKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&amp;sll=30.434977%2C59.913783&amp;sspn=0.314187%2C0.093277&amp;text=%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%9F%D0%AD%D0%9A&amp;whatshere%5Bpoint%5D=30.440487%2C59.943144&amp;whatshere%5Bzoom%5D=16&amp;z=12.65"> Якорная улица, 17</a>
-                          </h1>
+                          <p class="u-text u-text-default u-text-2">
+                            <a class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-link u-button-style u-none u-text-palette-1-base u-btn-1" href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.434977%2C59.913783&amp;mode=search&amp;sctx=ZAAAAAgBEAAaKAoSCbdhFASPhz5AETfEeM2r7k1AEhIJ9UwvMZbptz8RMuTYeoZwnD8iBgABAgMEBSgKOABAvYIGSAFiK3JlYXJyPXNjaGVtZV9Mb2NhbC9HZW8vRW5hYmxlQmVhdXR5RmlsdGVyPTFqAnJ1nQHNzEw9oAEAqAEAvQGXsb%2BawgGGAcay6bmcBbaPmKUEoPDzg4cB1N%2Bf%2F%2BUCg8TbxM4Bnf%2FbroMB%2FebhnsoCs4eV8agD4tn0lskGgurel%2FgDsviHmdMGwcyYt%2FAEmP3gtE2527%2FboQKTgoGihwOks%2BqP6wHbnovQePjFz%2FKbBafPzfqjAYT82%2FJQhMmzhv8B2bXR7bYE1ODPk%2BgE6gEA8gEA%2BAEAggIR0YHQutC70LDQtCDQn9Ct0JqKAgCSAgCaAgxkZXNrdG9wLW1hcHM%3D&amp;sll=30.434977%2C59.913783&amp;sspn=0.314187%2C0.093277&amp;text=%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%9F%D0%AD%D0%9A&amp;whatshere%5Bpoint%5D=30.440487%2C59.943144&amp;whatshere%5Bzoom%5D=16&amp;z=12.65"> Якорная улица, 17</a>
+                          </p>
                           <h1 class="u-text u-text-default u-text-palette-1-base u-text-7">пн-пт: 08:00-20:00</h1>
                           <h1 class="u-text u-text-default u-text-palette-1-base u-text-8">сб-вс: 10:00-16:00</h1>
+                        </div>
+                      </div>
+                      <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                        <div class="u-container-layout">
+                            <h1 class="u-text u-text-default u-text-palette-1-base u-text-1">Склад OZON</h1>
+                            <p class="u-text u-text-default u-text-2">
+                                <a class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-1-base u-btn u-button-link u-button-style u-none u-text-palette-1-base u-btn-1" href="https://yandex.ru/maps/2/saint-petersburg/house/sofiyskaya_ulitsa_118k4s1/Z0kYcgBoTkMHQFtjfXRwcnthYg==/?ll=30.478759%2C59.813727&z=17"> Софийская ул., 118, корп. 4, стр. 1, посёлок Петро-Славянка</a>
+                            </p>
+                            <h1 class="u-text u-text-default u-text-palette-1-base u-text-4">24/7</h1>
                         </div>
                       </div>
                     </div>
@@ -269,7 +275,17 @@
                     <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-2" href="https://www.wildberries.ru/">WB интернет-магазин</a>
                   </p>
                   <p class="u-text u-text-palette-1-base u-text-3">
-                    <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3" href="https://www.wildberries.ru/seller/371119">Магазин поставщика</a>
+                    <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3" href="https://www.wildberries.ru/seller/371119">WB магазин поставщика</a>
+                  </p>
+
+                  <p class="u-text u-text-palette-1-base u-text-1">
+                    <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" href="https://seller.ozon.ru/">OZON Seller</a>
+                  </p>
+                  <p class="u-text u-text-palette-1-base u-text-2">
+                    <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-2" href="https://www.ozon.ru/">OZON интернет-магазин</a>
+                  </p>
+                  <p class="u-text u-text-palette-1-base u-text-3">
+                    <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3" href="https://www.ozon.ru/seller/sokol0ve-341256/">OZON магазин поставщика</a>
                   </p>
                 </div>
               </div>

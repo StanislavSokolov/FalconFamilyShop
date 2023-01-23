@@ -20,8 +20,8 @@ import static java.lang.Integer.parseInt;
 @WebServlet("/wb")
 public class WBServlet extends HttpServlet {
 
-    private final String TOKEN1 = "";
-    private final String TOKEN2 = "";
+    private final String TOKEN1 = "token";
+    private final String TOKEN2 = "token";
 
     ArrayList<ItemShop> productsPrev;
     ArrayList<Product> stockPrev;

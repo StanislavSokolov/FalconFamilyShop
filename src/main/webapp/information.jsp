@@ -22,7 +22,7 @@
           google.charts.setOnLoadCallback(drawChart);
                                    function drawChart() {
                                            var data = google.visualization.arrayToDataTable([
-                                             ['Дата', 'Купили', 'Заказали'],
+                                             ['Дата', 'Купили (${totalSaleWeek})', 'Заказали (${totalOrderWeek})'],
                                              <c:forEach var="day" items="${arrayListWeek}">
                                                 ['${day.date}', ${day.sumSale}, ${day.sumOrder}],
                                              </c:forEach>
@@ -43,7 +43,7 @@
                                          google.charts.setOnLoadCallback(drawChart1);
                                                        function drawChart1() {
                                                                var data = google.visualization.arrayToDataTable([
-                                                                 ['Дата', 'Оборот'],
+                                                                 ['Дата', 'Оборот (${totalSaleMoneyWeek})'],
                                                                  <c:forEach var="day" items="${arrayListWeek}">
                                                                  ['${day.date}', ${day.sumSaleMoney}],
                                                                  </c:forEach>
@@ -79,7 +79,7 @@
   </head>
   <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="/information">SOKOL0VE</a>
+          <a href="/${shop2}">Перейти на ${title2}</a>
         </h3>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
@@ -90,18 +90,18 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information" data-page-id="36011200">Информация</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/data#sec-e0bf" data-page-id="36011200">Склад</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information" data-page-id="36011200">Информация</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
               </div>
             </div>
@@ -165,8 +165,18 @@
                     <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-2" href="https://www.wildberries.ru/">WB интернет-магазин</a>
                   </p>
                   <p class="u-text u-text-palette-1-base u-text-3">
-                    <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3" href="https://www.wildberries.ru/seller/371119">Магазин поставщика</a>
+                    <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3" href="https://www.wildberries.ru/seller/371119">WB магазин поставщика</a>
                   </p>
+
+                                    <p class="u-text u-text-palette-1-base u-text-1">
+                                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" href="https://seller.ozon.ru/">OZON Seller</a>
+                                    </p>
+                                    <p class="u-text u-text-palette-1-base u-text-2">
+                                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-2" href="https://www.ozon.ru/">OZON интернет-магазин</a>
+                                    </p>
+                                    <p class="u-text u-text-palette-1-base u-text-3">
+                                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3" href="https://www.ozon.ru/seller/sokol0ve-341256/">OZON магазин поставщика</a>
+                                    </p>
                 </div>
               </div>
             </div>

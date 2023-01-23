@@ -21,13 +21,15 @@ public class SQL {
         return DriverManager.getConnection("jdbc:mysql://localhost/ffs", "user","password");
     }
 
-    public static ArrayList<Day> upDate() {
+    public static ArrayList<Day> upDate(String shop) {
         ArrayList<Day> days = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             try (Connection conn = getConnection()) {
                 Statement statement = conn.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM saleorderstat");
+                ResultSet resultSet = null;
+                if (shop.equals("wb")) resultSet = statement.executeQuery("SELECT * FROM saleorderstat");
+                if (shop.equals("ozon")) resultSet = statement.executeQuery("SELECT * FROM salestat");
                 while (resultSet.next()) {
                     Day day = new Day(resultSet.getString("cdate"), resultSet.getInt("sumSale"), resultSet.getInt("sumOrder"), resultSet.getInt("sumSaleMoney"), resultSet.getString("popItem"));
                     days.add(day);
