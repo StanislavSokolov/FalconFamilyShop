@@ -122,97 +122,46 @@ public class WBServlet extends HttpServlet {
             URL generetedURL;
             String response = null;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ArrayList<Product1> product1ArrayList1 = SQL.upDate1("wborders", 0);
+            ArrayList<Product1> product1ArrayList = SQL.upDate1("wbsales", 0);
 
-            generetedURL = URLRequestResponse.generateURL(2, 6, TOKEN1);
-            try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKEN1);
-                if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
-                    JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
-                    System.out.println(jsonObject.toString());
-
-                    for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                        boolean coincidence = false;
-                        String s = jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString();
-                        s = s.substring(0, 10);
-                        if (s.equals(URLRequestResponse.getDataCurrent())) {
-                            if (products.isEmpty()) {
-                                products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                        String.valueOf((int) (Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
-                            } else {
-                                for (ItemShop itemShopCurrent : products) {
-                                    if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
-                                        itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
-                                        itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
-                                        itemShopCurrent.setForPay(String.valueOf((int) (Float.parseFloat(itemShopCurrent.getForPay()) + Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)));
-                                        coincidence = true;
-                                    }
-                                }
-                                if (!coincidence) {
-                                    products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                            String.valueOf((int) (Float.parseFloat(jsonObject.getJSONArray("price").getJSONObject(i).get("forPay").toString())*0.9)),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("regionName").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
-                                }
-                            }
+            for (int i = 0; i < product1ArrayList.size(); i++) {
+                boolean coincidence = false;
+                if (products.isEmpty()) {
+                    products.add(new ItemShop(product1ArrayList.get(i).getCsubject(), product1ArrayList.get(i).getSupplierArticle(), String.valueOf(product1ArrayList.get(i).getFinishedPrice()), String.valueOf(product1ArrayList.get(i).getForPay()), "", product1ArrayList.get(i).getOblastOkrugName(), product1ArrayList.get(i).getCdate()));
+                } else {
+                    for (ItemShop itemShopCurrent : products) {
+                        if (itemShopCurrent.getSupplierArticle().equals(product1ArrayList.get(i).getSupplierArticle())) {
+                            itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
+                            itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
+                            itemShopCurrent.setForPay(String.valueOf((int) (Float.parseFloat(itemShopCurrent.getForPay()) + product1ArrayList.get(i).getForPay()*0.9)));
+                            coincidence = true;
                         }
                     }
+                    if (!coincidence) {
+                        products.add(new ItemShop(product1ArrayList.get(i).getCsubject(), product1ArrayList.get(i).getSupplierArticle(), String.valueOf(product1ArrayList.get(i).getFinishedPrice()), String.valueOf(product1ArrayList.get(i).getForPay()), "", product1ArrayList.get(i).getOblastOkrugName(), product1ArrayList.get(i).getCdate()));
+                    }
                 }
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
+
             }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            generetedURL = URLRequestResponse.generateURL(2, 7, TOKEN1);
-            try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKEN1);
-                if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
-                    JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
-                    System.out.println(jsonObject.toString());
-
-                    for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                        boolean coincidence = false;
-                        String s = jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString();
-                        s = s.substring(0, 10);
-                        if (s.equals(URLRequestResponse.getDataCurrent())) {
-                            if (products.isEmpty()) {
-                                products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("oblast").toString(),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
-                            } else {
-                                for (ItemShop itemShopCurrent : products) {
-                                    if (itemShopCurrent.getSupplierArticle().equals(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString())) {
-                                        itemShopCurrent.setOrder(itemShopCurrent.getOrder() + 1);
-                                        itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
-                                        coincidence = true;
-                                    }
-                                }
-                                if (!coincidence) {
-                                    products.add(new ItemShop(jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("totalPrice").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("warehouseName").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("oblast").toString(),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("date").toString()));
-                                }
-                            }
+            for (int i = 0; i < product1ArrayList1.size(); i++) {
+                boolean coincidence = false;
+                if (products.isEmpty()) {
+                    products.add(new ItemShop(product1ArrayList1.get(i).getCsubject(), product1ArrayList1.get(i).getSupplierArticle(), String.valueOf(product1ArrayList1.get(i).getFinishedPrice()),  "", product1ArrayList1.get(i).getOblastOkrugName(), product1ArrayList1.get(i).getCdate()));
+                } else {
+                    for (ItemShop itemShopCurrent : products) {
+                        if (itemShopCurrent.getSupplierArticle().equals(product1ArrayList1.get(i).getSupplierArticle())) {
+                            itemShopCurrent.setOrder(itemShopCurrent.getOrder() + 1);
+                            itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
+                            coincidence = true;
                         }
                     }
+                    if (!coincidence) {
+                        products.add(new ItemShop(product1ArrayList1.get(i).getCsubject(), product1ArrayList1.get(i).getSupplierArticle(), String.valueOf(product1ArrayList1.get(i).getFinishedPrice()),  "", product1ArrayList1.get(i).getOblastOkrugName(), product1ArrayList1.get(i).getCdate()));
+                    }
                 }
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
+
             }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

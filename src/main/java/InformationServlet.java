@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import static java.lang.Integer.parseInt;
 
@@ -48,39 +50,65 @@ public class InformationServlet extends HttpServlet {
 
         String shop = httpServletRequest.getParameter("shop");
 
+        ArrayList<ArrayList> arrayListsSales = new ArrayList<>();
+        ArrayList<ArrayList> arrayListsOrders = new ArrayList<>();
+        ArrayList<Day> week = new ArrayList<>();
+
+        int totalSaleWeek = 0;
+        int totalOrderWeek = 0;
+        int totalSaleMoneyWeek = 0;
+
         if (shop != null) {
             if (shop.equals("wb")) {
                 httpServletRequest.setAttribute("shop1", shop);
                 httpServletRequest.setAttribute("shop2", "ozon");
                 httpServletRequest.setAttribute("title1", "WB");
                 httpServletRequest.setAttribute("title2", "OZON");
+
+                for (int i = -6; i < 1; i++) {
+                    ArrayList<Product1> product1s = SQL.upDate1("wbsales", i);
+                    ArrayList<Product1> product2s = SQL.upDate1("wborders", i);
+                    arrayListsSales.add(product1s);
+                    arrayListsOrders.add(product2s);
+                }
+
+                for (int i = 0; i < arrayListsSales.size(); i++) {
+                    int orders = arrayListsOrders.get(i).size();
+                    int sales = arrayListsSales.get(i).size();
+                    int saleMoney = 0;
+                    totalOrderWeek = totalOrderWeek + arrayListsOrders.get(i).size();
+                    totalSaleWeek = totalSaleWeek + arrayListsSales.get(i).size();
+                    ArrayList<Product1> product1s = arrayListsSales.get(i);
+                    for (int j = 0; j < product1s.size(); j++) {
+                        totalSaleMoneyWeek = totalSaleMoneyWeek + product1s.get(j).getForPay();
+                        saleMoney = saleMoney + product1s.get(j).getForPay();
+                    }
+                    week.add(new Day(URLRequestResponse.getData(i-arrayListsSales.size() + 1), sales, orders, saleMoney, "test"));
+                }
             } else {
                 httpServletRequest.setAttribute("shop1", shop);
                 httpServletRequest.setAttribute("shop2", "wb");
                 httpServletRequest.setAttribute("title1", "OZON");
                 httpServletRequest.setAttribute("title2", "WB");
+
+                ArrayList<Day> allTime = SQL.upDate(shop);
+
+                int countStart = 7;
+
+                if (allTime.size() < countStart) countStart = allTime.size();
+                for (int i = allTime.size() - countStart; i < allTime.size(); i++) {
+                    week.add(allTime.get(i));
+                }
+                if (!week.isEmpty()) {
+                    for (Day d: week) {
+                        totalSaleWeek = totalSaleWeek + d.getSumSale();
+                        totalOrderWeek = totalOrderWeek + d.getSumOrder();
+                        totalSaleMoneyWeek = totalSaleMoneyWeek + d.getSumSaleMoney();
+                    }
+                }
             }
-
-            ArrayList<Day> allTime = SQL.upDate(shop);
-            ArrayList<Day> week = new ArrayList<>();
-
-            int countStart = 7;
-
-            if (allTime.size() < countStart) countStart = allTime.size();
-            for (int i = allTime.size() - countStart; i < allTime.size(); i++) {
-                week.add(allTime.get(i));
-            }
-
-            int totalSaleWeek = 0;
-            int totalOrderWeek = 0;
-            int totalSaleMoneyWeek = 0;
 
             if (!week.isEmpty()) {
-                for (Day d: week) {
-                    totalSaleWeek = totalSaleWeek + d.getSumSale();
-                    totalOrderWeek = totalOrderWeek + d.getSumOrder();
-                    totalSaleMoneyWeek = totalSaleMoneyWeek + d.getSumSaleMoney();
-                }
                 httpServletRequest.setAttribute("arrayListWeek", week);
                 httpServletRequest.setAttribute("totalSaleWeek", totalSaleWeek);
                 httpServletRequest.setAttribute("totalOrderWeek", totalOrderWeek);
@@ -89,34 +117,9 @@ public class InformationServlet extends HttpServlet {
 
         } else {
 
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//            System.out.println(week.get(0).getSumSaleMoney());
-//            ArrayList<Day> month = new ArrayList<>();
-//            for (int i = allTime.size() - 28; i < allTime.size(); i++) {
-//                week.add(allTime.get(i));
-//            }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//            if (!week.isEmpty()) httpServletRequest.setAttribute("arrayListWeek", week);
-//            httpServletRequest.setAttribute("arrayListWeek", week);
-//            httpServletRequest.setAttribute("arrayListMonth", month);
-//            httpServletRequest.setAttribute("test", "daysPrev");
-
         }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
         httpServletRequest.getRequestDispatcher("information.jsp").forward(httpServletRequest, httpServletResponse);
 
