@@ -17,10 +17,12 @@ import static java.lang.Integer.parseInt;
 @WebServlet("/ozon")
 public class OzonServlet extends HttpServlet {
 
-    private final String TOKEN1 = "token";
-    private final String TOKEN2 = "token";
+    private final String TOKEN2 = "TOKEN2";
+    private final String TOKEN1 = "TOKEN2";
 
-    ArrayList<ItemShop> productsPrev;
+    ArrayList<ItemShop> productsOfTheDayPrev;
+    ArrayList<ItemShop> productsOfTheWeekPrev;
+    ArrayList<ItemShop> productsOfTheMonthPrev;
     ArrayList<Product> stockPrev;
 
     @Override
@@ -56,15 +58,27 @@ public class OzonServlet extends HttpServlet {
 
         if ((category != null) & (value != null)) {
             ItemShop productPopular = null;
-            if (!productsPrev.isEmpty()) {
-                productsPrev.sort((o1, o2) -> o2.getRating() - o1.getRating());
-                productPopular = productsPrev.get(0);
+            if (!productsOfTheDayPrev.isEmpty()) {
+                productsOfTheDayPrev.sort((o1, o2) -> o2.getRating() - o1.getRating());
+                productPopular = productsOfTheDayPrev.get(0);
             }
-            if (category.equals("stat")) {
-                if (value.equals("name")) productsPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
-                if (value.equals("order")) productsPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
-                if (value.equals("sale")) productsPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
-                if (value.equals("forpay")) productsPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
+            if (category.equals("statday")) {
+                if (value.equals("name")) productsOfTheDayPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
+                if (value.equals("order")) productsOfTheDayPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
+                if (value.equals("sale")) productsOfTheDayPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
+                if (value.equals("forpay")) productsOfTheDayPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
+            }
+            if (category.equals("statweek")) {
+                if (value.equals("name")) productsOfTheWeekPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
+                if (value.equals("order")) productsOfTheWeekPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
+                if (value.equals("sale")) productsOfTheWeekPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
+                if (value.equals("forpay")) productsOfTheWeekPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
+            }
+            if (category.equals("statmonth")) {
+                if (value.equals("name")) productsOfTheMonthPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
+                if (value.equals("order")) productsOfTheMonthPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
+                if (value.equals("sale")) productsOfTheMonthPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
+                if (value.equals("forpay")) productsOfTheMonthPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
             }
             if (category.equals("stock")) {
                 if (value.equals("name")) stockPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
@@ -86,7 +100,7 @@ public class OzonServlet extends HttpServlet {
             int sumOrder = 0;
             int sumSaleMoney = 0;
 
-            for (ItemShop ishop : productsPrev) {
+            for (ItemShop ishop : productsOfTheDayPrev) {
                 sumSale = sumSale + ishop.getSale();
                 sumOrder = sumOrder + ishop.getOrder();
                 String forPay = ishop.getForPay();
@@ -94,7 +108,9 @@ public class OzonServlet extends HttpServlet {
             }
 
             httpServletRequest.setAttribute("productPopular", productPopular);
-            httpServletRequest.setAttribute("arrayList", productsPrev);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheDay", productsOfTheDayPrev);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheWeek", productsOfTheWeekPrev);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheMonth", productsOfTheMonthPrev);
             httpServletRequest.setAttribute("sumOrder", sumOrder);
             httpServletRequest.setAttribute("sumSale", sumSale);
             httpServletRequest.setAttribute("sumSaleMoney", sumSaleMoney);
@@ -111,7 +127,6 @@ public class OzonServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ArrayList<ItemShop> products = new ArrayList<>();
             ArrayList<Product> stock = new ArrayList<>();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -140,75 +155,31 @@ public class OzonServlet extends HttpServlet {
                 JSONObject jsonObject2 = new JSONObject(response);
                 JSONObject jsonObject3 = new JSONObject(String.valueOf(jsonObject2.get("result")));
                 JSONObject jsonObject4 = new JSONObject(String.valueOf(jsonObject3.get("stocks")));
-                Product product = new Product(jsonObject3.get("id").toString(), Integer.parseInt(jsonObject4.get("present").toString()), Integer.parseInt(jsonObject4.get("present").toString()) + Integer.parseInt(jsonObject4.get("reserved").toString()), Integer.parseInt(jsonObject3.get("id").toString()), jsonObject3.get("name").toString());
+                Product product = new Product(jsonObject3.get("id").toString(), parseInt(jsonObject4.get("present").toString()), parseInt(jsonObject4.get("present").toString()) + parseInt(jsonObject4.get("reserved").toString()), parseInt(jsonObject3.get("id").toString()), jsonObject3.get("name").toString());
                 product.setPrice(((int) Float.parseFloat(jsonObject3.get("price").toString())));
                 product.setDiscount((int) (100 - 100 * (Float.parseFloat(jsonObject3.get("price").toString())/Float.parseFloat(jsonObject3.get("old_price").toString()))));
                 stock.add(product);
             }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            generetedURL = URLRequestResponse.generateURL(3, 3, "0");
-            try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKEN1, TOKEN2, 3, "0", "0");
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
-            System.out.println(response);
 
-            String answerString = "";
+            ArrayList<ItemShop> productsOfTheDay = new ArrayList<>();
+//            productsOfTheDay = SQL.upDate1("ozon", 0);
 
-            JSONObject jsonObject5 = new JSONObject(response);
-            for (int i = 0; i < jsonObject5.getJSONArray("result").length(); i++) {
-                JSONArray jsonArray = (JSONArray) jsonObject5.getJSONArray("result").getJSONObject(i).get("products");
-                JSONObject jsonObject6 = new JSONObject(String.valueOf(jsonObject5.getJSONArray("result").getJSONObject(i).get("analytics_data")));
-                ItemShop itemShop = new ItemShop(jsonArray.getJSONObject(0).get("name").toString(),
-                        jsonArray.getJSONObject(0).get("offer_id").toString(),
-                        jsonArray.getJSONObject(0).get("price").toString(),
-                        String.valueOf((int) (Float.parseFloat(jsonArray.getJSONObject(0).get("price").toString()) * 0.88)),
-                        jsonObject6.getString("warehouse_name"),
-                        jsonObject6.getString("region") + " (" + jsonObject6.getString("city") + ")",
-                        jsonObject5.getJSONArray("result").getJSONObject(i).get("created_at").toString());
-                answerString = answerString
-                        + "\n"
-                        + "Наименование: "
-                        + jsonArray.getJSONObject(0).get("name").toString()
-                        + "\n"
-                        + "Артикул: "
-                        + jsonArray.getJSONObject(0).get("offer_id").toString()
-                        + "\n"
-                        + "Количество: "
-                        + jsonArray.getJSONObject(0).get("quantity").toString()
-                        + "\n"
-                        + "Цена: "
-                        + jsonArray.getJSONObject(0).get("price").toString()
-                        + "\n"
-                        + "Склад отгрузки: "
-                        + jsonObject6.getString("warehouse_name")
-                        + "\n"
-                        + "Регион доставки: "
-                        + jsonObject6.getString("region") + " (" + jsonObject6.getString("city") + ")"
-                        + "\n"
-                        + "Дата: "
-                        + jsonObject5.getJSONArray("result").getJSONObject(i).get("created_at").toString()
-                        + "\n";
-
-                products.add(itemShop);
-            }
-
-            System.out.println(answerString);
+//            System.out.println(answerString);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             ItemShop productPopular = null;
-            if (!products.isEmpty()) {
-                products.sort((o1, o2) -> o2.getRating() - o1.getRating());
-                productPopular = products.get(0);
+            if (!productsOfTheDay.isEmpty()) {
+                productsOfTheDay.sort((o1, o2) -> o2.getRating() - o1.getRating());
+                productPopular = productsOfTheDay.get(0);
             }
 
             int sumSale = 0;
             int sumOrder = 0;
             int sumSaleMoney = 0;
 
-            if (!products.isEmpty()) {
-                for (ItemShop ishop : products) {
+            if (!productsOfTheDay.isEmpty()) {
+                for (ItemShop ishop : productsOfTheDay) {
                     sumSale = sumSale + ishop.getSale();
                     sumOrder = sumOrder + ishop.getOrder();
                     String forPay = ishop.getForPay();
@@ -233,10 +204,18 @@ public class OzonServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            productsPrev = new ArrayList<>();
-            for (ItemShop itemShop : products) {
-                productsPrev.add(itemShop);
+            productsOfTheDayPrev = new ArrayList<>();
+            for (ItemShop itemShop : productsOfTheDay) {
+                productsOfTheDayPrev.add(itemShop);
             }
+            productsOfTheWeekPrev = new ArrayList<>();
+//            for (ItemShop itemShop : productsOfTheWeek) {
+//                productsOfTheWeekPrev.add(itemShop);
+//            }
+            productsOfTheMonthPrev = new ArrayList<>();
+//            for (ItemShop itemShop : productsOfTheMonth) {
+//                productsOfTheMonthPrev.add(itemShop);
+//            }
             stockPrev = new ArrayList<>();
             for (Product product : stock) {
                 stockPrev.add(product);
@@ -245,7 +224,9 @@ public class OzonServlet extends HttpServlet {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             httpServletRequest.setAttribute("productPopular", productPopular);
-            httpServletRequest.setAttribute("arrayList", products);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheDay", productsOfTheDay);
+//            httpServletRequest.setAttribute("arrayListSoldProductsOfTheWeek", productsOfTheWeek);
+//            httpServletRequest.setAttribute("arrayListSoldProductsOfTheMonth", productsOfTheMonth);
             httpServletRequest.setAttribute("sumOrder", sumOrder);
             httpServletRequest.setAttribute("sumSale", sumSale);
             httpServletRequest.setAttribute("sumSaleMoney", sumSaleMoney);

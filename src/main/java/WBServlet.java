@@ -1,13 +1,9 @@
 import org.json.JSONObject;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Comparator;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -20,10 +16,13 @@ import static java.lang.Integer.parseInt;
 @WebServlet("/wb")
 public class WBServlet extends HttpServlet {
 
-    private final String TOKEN1 = "token";
-    private final String TOKEN2 = "token";
+    private final String TOKENWBSTANDART = "TOKENWBSTANDART";
+    private final String TOKENWBSTATISTIC = "TOKENWBSTANDART";
+    private final String TOKENWBADVERTISING = "TOKENWBSTANDART";
 
-    ArrayList<ItemShop> productsPrev;
+    ArrayList<ItemShop> productsOfTheDayPrev;
+    ArrayList<ItemShop> productsOfTheWeekPrev;
+    ArrayList<ItemShop> productsOfTheMonthPrev;
     ArrayList<Product> stockPrev;
 
     @Override
@@ -59,15 +58,27 @@ public class WBServlet extends HttpServlet {
 
         if ((category != null) & (value != null)) {
             ItemShop productPopular = null;
-            if (!productsPrev.isEmpty()) {
-                productsPrev.sort((o1, o2) -> o2.getRating() - o1.getRating());
-                productPopular = productsPrev.get(0);
+            if (!productsOfTheDayPrev.isEmpty()) {
+                productsOfTheDayPrev.sort((o1, o2) -> o2.getRating() - o1.getRating());
+                productPopular = productsOfTheDayPrev.get(0);
             }
-            if (category.equals("stat")) {
-                if (value.equals("name")) productsPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
-                if (value.equals("order")) productsPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
-                if (value.equals("sale")) productsPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
-                if (value.equals("forpay")) productsPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
+            if (category.equals("statday")) {
+                if (value.equals("name")) productsOfTheDayPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
+                if (value.equals("order")) productsOfTheDayPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
+                if (value.equals("sale")) productsOfTheDayPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
+                if (value.equals("forpay")) productsOfTheDayPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
+            }
+            if (category.equals("statweek")) {
+                if (value.equals("name")) productsOfTheWeekPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
+                if (value.equals("order")) productsOfTheWeekPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
+                if (value.equals("sale")) productsOfTheWeekPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
+                if (value.equals("forpay")) productsOfTheWeekPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
+            }
+            if (category.equals("statmonth")) {
+                if (value.equals("name")) productsOfTheMonthPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
+                if (value.equals("order")) productsOfTheMonthPrev.sort((o1, o2) -> o2.getOrder() - o1.getOrder());
+                if (value.equals("sale")) productsOfTheMonthPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
+                if (value.equals("forpay")) productsOfTheMonthPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
             }
             if (category.equals("stock")) {
                 if (value.equals("name")) stockPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
@@ -89,7 +100,7 @@ public class WBServlet extends HttpServlet {
             int sumOrder = 0;
             int sumSaleMoney = 0;
 
-            for (ItemShop ishop : productsPrev) {
+            for (ItemShop ishop : productsOfTheDayPrev) {
                 sumSale = sumSale + ishop.getSale();
                 sumOrder = sumOrder + ishop.getOrder();
                 String forPay = ishop.getForPay();
@@ -97,7 +108,9 @@ public class WBServlet extends HttpServlet {
             }
 
             httpServletRequest.setAttribute("productPopular", productPopular);
-            httpServletRequest.setAttribute("arrayList", productsPrev);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheDay", productsOfTheDayPrev);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheWeek", productsOfTheWeekPrev);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheMonth", productsOfTheMonthPrev);
             httpServletRequest.setAttribute("sumOrder", sumOrder);
             httpServletRequest.setAttribute("sumSale", sumSale);
             httpServletRequest.setAttribute("sumSaleMoney", sumSaleMoney);
@@ -114,7 +127,6 @@ public class WBServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ArrayList<ItemShop> products = new ArrayList<>();
             ArrayList<Product> stock = new ArrayList<>();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -122,53 +134,45 @@ public class WBServlet extends HttpServlet {
             URL generetedURL;
             String response = null;
 
-            ArrayList<Product1> product1ArrayList1 = SQL.upDate1("wborders", 0);
-            ArrayList<Product1> product1ArrayList = SQL.upDate1("wbsales", 0);
+            ArrayList<Product1> arrayListOfOrderedProductsDay = SQL.upDate1("wborders", 0);
+            ArrayList<Product1> arrayListOfSoldProductsDay = SQL.upDate1("wbsales", 0);
 
-            for (int i = 0; i < product1ArrayList.size(); i++) {
-                boolean coincidence = false;
-                if (products.isEmpty()) {
-                    products.add(new ItemShop(product1ArrayList.get(i).getCsubject(), product1ArrayList.get(i).getSupplierArticle(), String.valueOf(product1ArrayList.get(i).getFinishedPrice()), String.valueOf(product1ArrayList.get(i).getForPay()), "", product1ArrayList.get(i).getOblastOkrugName(), product1ArrayList.get(i).getCdate()));
-                } else {
-                    for (ItemShop itemShopCurrent : products) {
-                        if (itemShopCurrent.getSupplierArticle().equals(product1ArrayList.get(i).getSupplierArticle())) {
-                            itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
-                            itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
-                            itemShopCurrent.setForPay(String.valueOf((int) (Float.parseFloat(itemShopCurrent.getForPay()) + product1ArrayList.get(i).getForPay()*0.9)));
-                            coincidence = true;
-                        }
-                    }
-                    if (!coincidence) {
-                        products.add(new ItemShop(product1ArrayList.get(i).getCsubject(), product1ArrayList.get(i).getSupplierArticle(), String.valueOf(product1ArrayList.get(i).getFinishedPrice()), String.valueOf(product1ArrayList.get(i).getForPay()), "", product1ArrayList.get(i).getOblastOkrugName(), product1ArrayList.get(i).getCdate()));
-                    }
-                }
-
-            }
-
-            for (int i = 0; i < product1ArrayList1.size(); i++) {
-                boolean coincidence = false;
-                if (products.isEmpty()) {
-                    products.add(new ItemShop(product1ArrayList1.get(i).getCsubject(), product1ArrayList1.get(i).getSupplierArticle(), String.valueOf(product1ArrayList1.get(i).getFinishedPrice()),  "", product1ArrayList1.get(i).getOblastOkrugName(), product1ArrayList1.get(i).getCdate()));
-                } else {
-                    for (ItemShop itemShopCurrent : products) {
-                        if (itemShopCurrent.getSupplierArticle().equals(product1ArrayList1.get(i).getSupplierArticle())) {
-                            itemShopCurrent.setOrder(itemShopCurrent.getOrder() + 1);
-                            itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
-                            coincidence = true;
-                        }
-                    }
-                    if (!coincidence) {
-                        products.add(new ItemShop(product1ArrayList1.get(i).getCsubject(), product1ArrayList1.get(i).getSupplierArticle(), String.valueOf(product1ArrayList1.get(i).getFinishedPrice()),  "", product1ArrayList1.get(i).getOblastOkrugName(), product1ArrayList1.get(i).getCdate()));
-                    }
-                }
-
-            }
+            ArrayList<ItemShop> productsOfTheDay = toCreateListOfSoldProducts(arrayListOfOrderedProductsDay, arrayListOfSoldProductsDay);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            generetedURL = URLRequestResponse.generateURL(2, 5, TOKEN1);
+            ArrayList<Product1> arrayListOfOrderedProductsWeek = new ArrayList<>();
+            ArrayList<Product1> arrayListOfSoldProductsWeek = new ArrayList<>();
+
+            for (int i = 0; i > -7; i--) {
+                ArrayList<Product1> arrayListOfOrderedProductsCurrent = SQL.upDate1("wborders", i);
+                for (Product1 p1: arrayListOfOrderedProductsCurrent) arrayListOfOrderedProductsWeek.add(p1);
+                ArrayList<Product1> arrayListOfSoldProductsCurrent = SQL.upDate1("wbsales", i);
+                for (Product1 p1: arrayListOfSoldProductsCurrent) arrayListOfSoldProductsWeek.add(p1);
+            }
+
+            ArrayList<ItemShop> productsOfTheWeek = toCreateListOfSoldProducts(arrayListOfOrderedProductsWeek, arrayListOfSoldProductsWeek);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            ArrayList<Product1> arrayListOfOrderedProductsMonth = new ArrayList<>();
+            ArrayList<Product1> arrayListOfSoldProductsMonth = new ArrayList<>();
+
+            for (int i = 0; i > -31; i--) {
+                ArrayList<Product1> arrayListOfOrderedProductsCurrent = SQL.upDate1("wborders", i);
+                for (Product1 p1: arrayListOfOrderedProductsCurrent) arrayListOfOrderedProductsMonth.add(p1);
+                ArrayList<Product1> arrayListOfSoldProductsCurrent = SQL.upDate1("wbsales", i);
+                for (Product1 p1: arrayListOfSoldProductsCurrent) arrayListOfSoldProductsMonth.add(p1);
+            }
+
+            ArrayList<ItemShop> productsOfTheMonth = toCreateListOfSoldProducts(arrayListOfOrderedProductsMonth, arrayListOfSoldProductsMonth);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            generetedURL = URLRequestResponse.generateURL(2, 5, TOKENWBSTATISTIC);
             try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL);
+                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENWBSTATISTIC);
+                System.out.println(response);
                 if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
                     JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
                     for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
@@ -205,17 +209,17 @@ public class WBServlet extends HttpServlet {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             ItemShop productPopular = null;
-            if (!products.isEmpty()) {
-                products.sort((o1, o2) -> o2.getRating() - o1.getRating());
-                productPopular = products.get(0);
+            if (!productsOfTheDay.isEmpty()) {
+                productsOfTheDay.sort((o1, o2) -> o2.getRating() - o1.getRating());
+                productPopular = productsOfTheDay.get(0);
             }
 
             int sumSale = 0;
             int sumOrder = 0;
             int sumSaleMoney = 0;
 
-            if (!products.isEmpty()) {
-                for (ItemShop ishop : products) {
+            if (!productsOfTheDay.isEmpty()) {
+                for (ItemShop ishop : productsOfTheDay) {
                     sumSale = sumSale + ishop.getSale();
                     sumOrder = sumOrder + ishop.getOrder();
                     String forPay = ishop.getForPay();
@@ -225,9 +229,9 @@ public class WBServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            generetedURL = URLRequestResponse.generateURL(2, 1, TOKEN2);
+            generetedURL = URLRequestResponse.generateURL(2, 1, TOKENWBSTANDART);
             try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKEN2);
+                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENWBSTANDART);
                 if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
                     System.out.println(response);
                     JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
@@ -261,9 +265,17 @@ public class WBServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            productsPrev = new ArrayList<>();
-            for (ItemShop itemShop : products) {
-                productsPrev.add(itemShop);
+            productsOfTheDayPrev = new ArrayList<>();
+            for (ItemShop itemShop : productsOfTheDay) {
+                productsOfTheDayPrev.add(itemShop);
+            }
+            productsOfTheWeekPrev = new ArrayList<>();
+            for (ItemShop itemShop : productsOfTheWeek) {
+                productsOfTheWeekPrev.add(itemShop);
+            }
+            productsOfTheMonthPrev = new ArrayList<>();
+            for (ItemShop itemShop : productsOfTheMonth) {
+                productsOfTheMonthPrev.add(itemShop);
             }
             stockPrev = new ArrayList<>();
             for (Product product : stock) {
@@ -273,7 +285,9 @@ public class WBServlet extends HttpServlet {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             httpServletRequest.setAttribute("productPopular", productPopular);
-            httpServletRequest.setAttribute("arrayList", products);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheDay", productsOfTheDay);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheWeek", productsOfTheWeek);
+            httpServletRequest.setAttribute("arrayListSoldProductsOfTheMonth", productsOfTheMonth);
             httpServletRequest.setAttribute("sumOrder", sumOrder);
             httpServletRequest.setAttribute("sumSale", sumSale);
             httpServletRequest.setAttribute("sumSaleMoney", sumSaleMoney);
@@ -293,6 +307,49 @@ public class WBServlet extends HttpServlet {
         httpServletRequest.getRequestDispatcher("data.jsp").forward(httpServletRequest, httpServletResponse);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
+
+    private ArrayList<ItemShop> toCreateListOfSoldProducts(ArrayList<Product1> arrayListOfOrderedProducts, ArrayList<Product1> arrayListOfSoldProducts) {
+        ArrayList<ItemShop> products = new ArrayList<>();
+        for (int i = 0; i < arrayListOfSoldProducts.size(); i++) {
+            boolean coincidence = false;
+            if (products.isEmpty()) {
+                products.add(new ItemShop(arrayListOfSoldProducts.get(i).getCsubject(), arrayListOfSoldProducts.get(i).getSupplierArticle(), String.valueOf(arrayListOfSoldProducts.get(i).getFinishedPrice()), String.valueOf(arrayListOfSoldProducts.get(i).getForPay()), "", arrayListOfSoldProducts.get(i).getOblastOkrugName(), arrayListOfSoldProducts.get(i).getCdate()));
+            } else {
+                for (ItemShop itemShopCurrent : products) {
+                    if (itemShopCurrent.getSupplierArticle().equals(arrayListOfSoldProducts.get(i).getSupplierArticle())) {
+                        itemShopCurrent.setSale(itemShopCurrent.getSale() + 1);
+                        itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
+                        itemShopCurrent.setForPay(String.valueOf((int) (Float.parseFloat(itemShopCurrent.getForPay()) + arrayListOfSoldProducts.get(i).getForPay()*0.9)));
+                        coincidence = true;
+                    }
+                }
+                if (!coincidence) {
+                    products.add(new ItemShop(arrayListOfSoldProducts.get(i).getCsubject(), arrayListOfSoldProducts.get(i).getSupplierArticle(), String.valueOf(arrayListOfSoldProducts.get(i).getFinishedPrice()), String.valueOf(arrayListOfSoldProducts.get(i).getForPay()), "", arrayListOfSoldProducts.get(i).getOblastOkrugName(), arrayListOfSoldProducts.get(i).getCdate()));
+                }
+            }
+
+        }
+
+        for (int i = 0; i < arrayListOfOrderedProducts.size(); i++) {
+            boolean coincidence = false;
+            if (products.isEmpty()) {
+                products.add(new ItemShop(arrayListOfOrderedProducts.get(i).getCsubject(), arrayListOfOrderedProducts.get(i).getSupplierArticle(), String.valueOf(arrayListOfOrderedProducts.get(i).getFinishedPrice()),  "", arrayListOfOrderedProducts.get(i).getOblastOkrugName(), arrayListOfOrderedProducts.get(i).getCdate()));
+            } else {
+                for (ItemShop itemShopCurrent : products) {
+                    if (itemShopCurrent.getSupplierArticle().equals(arrayListOfOrderedProducts.get(i).getSupplierArticle())) {
+                        itemShopCurrent.setOrder(itemShopCurrent.getOrder() + 1);
+                        itemShopCurrent.setRating(itemShopCurrent.getRating() + 1);
+                        coincidence = true;
+                    }
+                }
+                if (!coincidence) {
+                    products.add(new ItemShop(arrayListOfOrderedProducts.get(i).getCsubject(), arrayListOfOrderedProducts.get(i).getSupplierArticle(), String.valueOf(arrayListOfOrderedProducts.get(i).getFinishedPrice()),  "", arrayListOfOrderedProducts.get(i).getOblastOkrugName(), arrayListOfOrderedProducts.get(i).getCdate()));
+                }
+            }
+
+        }
+        return products;
     }
 
     @Override

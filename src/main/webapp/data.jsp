@@ -128,7 +128,7 @@
     </section>
     <section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <h1 class="u-text u-text-default u-text-1">Статистика</h1>
+        <h1 class="u-text u-text-default u-text-1">Статистика за день</h1>
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
           <table class="u-table-entity u-table-entity-1">
             <colgroup>
@@ -139,14 +139,14 @@
             </colgroup>
             <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
               <tr style="height: 45px;">
-                <th class="u-table-cell"><a href="/${shop1}?category=stat&value=name">Наименование</a></th>
-                <th class="u-table-cell"><a href="/${shop1}?category=stat&value=order">Заказали</a></th>
-                <th class="u-table-cell"><a href="/${shop1}?category=stat&value=sale">Купили</a></th>
-                <th class="u-table-cell"><a href="/${shop1}?category=stat&value=forpay">Вознаграждение</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=statday&value=name">Наименование</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=statday&value=order">Заказали</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=statday&value=sale">Купили</a></th>
+                <th class="u-table-cell"><a href="/${shop1}?category=statday&value=forpay">Вознаграждение</a></th>
               </tr>
             </thead>
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
-                <c:forEach var="count" items="${arrayList}">
+                <c:forEach var="count" items="${arrayListSoldProductsOfTheDay}">
                     <tr style="height: 65px;">
                         <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
                         <td class="u-table-cell">${count.order}</td>
@@ -159,6 +159,72 @@
         </div>
       </div>
     </section>
+    <section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
+          <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <h1 class="u-text u-text-default u-text-1">Статистика за неделю</h1>
+            <div class="u-expanded-width u-table u-table-responsive u-table-1">
+              <table class="u-table-entity u-table-entity-1">
+                <colgroup>
+                  <col width="25%">
+                  <col width="25%">
+                  <col width="25%">
+                  <col width="25%">
+                </colgroup>
+                <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
+                  <tr style="height: 45px;">
+                    <th class="u-table-cell"><a href="/${shop1}?category=statweek&value=name">Наименование</a></th>
+                    <th class="u-table-cell"><a href="/${shop1}?category=statweek&value=order">Заказали</a></th>
+                    <th class="u-table-cell"><a href="/${shop1}?category=statweek&value=sale">Купили</a></th>
+                    <th class="u-table-cell"><a href="/${shop1}?category=statweek&value=forpay">Вознаграждение</a></th>
+                  </tr>
+                </thead>
+                <tbody class="u-table-alt-palette-1-light-3 u-table-body">
+                    <c:forEach var="count" items="${arrayListSoldProductsOfTheWeek}">
+                        <tr style="height: 65px;">
+                            <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                            <td class="u-table-cell">${count.order}</td>
+                            <td class="u-table-cell">${count.sale}</td>
+                            <td class="u-table-cell">${count.forPay}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+    <section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
+              <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                <h1 class="u-text u-text-default u-text-1">Статистика за месяц</h1>
+                <div class="u-expanded-width u-table u-table-responsive u-table-1">
+                  <table class="u-table-entity u-table-entity-1">
+                    <colgroup>
+                      <col width="25%">
+                      <col width="25%">
+                      <col width="25%">
+                      <col width="25%">
+                    </colgroup>
+                    <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
+                      <tr style="height: 45px;">
+                        <th class="u-table-cell"><a href="/${shop1}?category=statmonth&value=name">Наименование</a></th>
+                        <th class="u-table-cell"><a href="/${shop1}?category=statmonth&value=order">Заказали</a></th>
+                        <th class="u-table-cell"><a href="/${shop1}?category=statmonth&value=sale">Купили</a></th>
+                        <th class="u-table-cell"><a href="/${shop1}?category=statmonth&value=forpay">Вознаграждение</a></th>
+                      </tr>
+                    </thead>
+                    <tbody class="u-table-alt-palette-1-light-3 u-table-body">
+                        <c:forEach var="count" items="${arrayListSoldProductsOfTheMonth}">
+                            <tr style="height: 65px;">
+                                <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                                <td class="u-table-cell">${count.order}</td>
+                                <td class="u-table-cell">${count.sale}</td>
+                                <td class="u-table-cell">${count.forPay}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
     <section class="u-align-center u-clearfix u-section-3" id="sec-e0bf">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <h1 class="u-text u-text-default u-text-1">Склад</h1>

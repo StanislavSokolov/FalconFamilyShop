@@ -51,6 +51,7 @@ public class SQL {
                 ResultSet resultSet = null;
                 if (db.equals("wborders")) resultSet = statement.executeQuery("SELECT * FROM statofeveryorderfromwb WHERE cdate = '" + URLRequestResponse.getData(day) + "';");
                 if (db.equals("wbsales")) resultSet = statement.executeQuery("SELECT * FROM statofeverysalefromwb WHERE cdate = '" + URLRequestResponse.getData(day) + "';");
+                if (db.equals("ozon")) resultSet = statement.executeQuery("SELECT * FROM statofeveryorderfromozon WHERE cdate = '" + URLRequestResponse.getData(day) + "';");
                 while (resultSet.next()) {
                     Product1 product1 = new Product1(resultSet.getString("cdate"), resultSet.getString("csubject"), resultSet.getString("supplierArticle"), resultSet.getInt("nmId"), resultSet.getInt("finishedPrice"), resultSet.getInt("forPay"), resultSet.getString("oblastOkrugName"), resultSet.getString("odid"));
                     products.add(product1);
