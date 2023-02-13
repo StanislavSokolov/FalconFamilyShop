@@ -16,14 +16,9 @@ import static java.lang.Integer.parseInt;
 @WebServlet("/wb")
 public class WBServlet extends HttpServlet {
 
-    private final String TOKENWBSTANDART = "TOKENWBSTANDART";
-    private final String TOKENWBSTATISTIC = "TOKENWBSTANDART";
-    private final String TOKENWBADVERTISING = "TOKENWBSTANDART";
-
     ArrayList<ItemShop> productsOfTheDayPrev;
     ArrayList<ItemShop> productsOfTheWeekPrev;
     ArrayList<ItemShop> productsOfTheMonthPrev;
-    ArrayList<Product> stockPrev;
 
     @Override
     protected void doGet(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
@@ -80,21 +75,6 @@ public class WBServlet extends HttpServlet {
                 if (value.equals("sale")) productsOfTheMonthPrev.sort((o1, o2) -> o2.getSale() - o1.getSale());
                 if (value.equals("forpay")) productsOfTheMonthPrev.sort((o1, o2) -> (int) (Double.parseDouble(o2.getForPay()) - Double.parseDouble(o1.getForPay())));
             }
-            if (category.equals("stock")) {
-                if (value.equals("name")) stockPrev.sort((o1, o2) -> o1.getSubject().compareTo(o2.getSubject()));
-                if (value.equals("remain")) stockPrev.sort((o1, o2) -> o2.getQuantity() - o1.getQuantity());
-                if (value.equals("ontheway")) stockPrev.sort((o1, o2) -> (o2.getQuantityFull() - o2.getQuantity()) - (o1.getQuantityFull() - o1.getQuantity()));
-                if (value.equals("profit")) stockPrev.sort((o1, o2) -> o2.getTotal() - o1.getTotal());
-                if (value.equals("price")) stockPrev.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
-                if (value.equals("discount")) stockPrev.sort((o1, o2) -> o2.getDiscount() - o1.getDiscount());
-            }
-            int total = 0;
-
-            for (Product productCurrent : stockPrev) {
-                int money = productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 68 / 10000;
-                productCurrent.setTotal(money);
-                total = total + money;
-            }
 
             int sumSale = 0;
             int sumOrder = 0;
@@ -115,29 +95,39 @@ public class WBServlet extends HttpServlet {
             httpServletRequest.setAttribute("sumSale", sumSale);
             httpServletRequest.setAttribute("sumSaleMoney", sumSaleMoney);
 
-            httpServletRequest.setAttribute("stock", stockPrev);
-            httpServletRequest.setAttribute("total", total);
-
             httpServletRequest.setAttribute("shop1", "wb");
             httpServletRequest.setAttribute("shop2", "ozon");
             httpServletRequest.setAttribute("title1", "WB");
             httpServletRequest.setAttribute("title2", "OZON");
         } else {
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            ArrayList<Product> stock = new ArrayList<>();
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            URL generetedURL;
-            String response = null;
 
             ArrayList<Product1> arrayListOfOrderedProductsDay = SQL.upDate1("wborders", 0);
             ArrayList<Product1> arrayListOfSoldProductsDay = SQL.upDate1("wbsales", 0);
 
             ArrayList<ItemShop> productsOfTheDay = toCreateListOfSoldProducts(arrayListOfOrderedProductsDay, arrayListOfSoldProductsDay);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            ItemShop productPopular = null;
+            if (!productsOfTheDay.isEmpty()) {
+                productsOfTheDay.sort((o1, o2) -> o2.getRating() - o1.getRating());
+                productPopular = productsOfTheDay.get(0);
+            }
+
+            int sumSale = 0;
+            int sumOrder = 0;
+            int sumSaleMoney = 0;
+
+            if (!productsOfTheDay.isEmpty()) {
+                for (ItemShop ishop : productsOfTheDay) {
+                    sumSale = sumSale + ishop.getSale();
+                    sumOrder = sumOrder + ishop.getOrder();
+                    String forPay = ishop.getForPay();
+                    sumSaleMoney = (int) (sumSaleMoney + Float.parseFloat(forPay));
+                }
+            }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -169,99 +159,7 @@ public class WBServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            generetedURL = URLRequestResponse.generateURL(2, 5, TOKENWBSTATISTIC);
-            try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENWBSTATISTIC);
-                System.out.println(response);
-                if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
-                    JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
-                    for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                        boolean coincidence = false;
-                        if (stock.isEmpty()) {
-                            stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                    parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
-                                    parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
-                                    parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
-                                    jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
-                        } else {
-                            for (Product productCurrent : stock) {
-                                if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
-                                    productCurrent.setQuantity(productCurrent.getQuantity() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()));
-                                    productCurrent.setQuantityFull(productCurrent.getQuantityFull() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()));
-                                    coincidence = true;
-                                }
-                            }
-                            if (!coincidence) {
-                                stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                        parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
-                                        parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
-                                        parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
-                                        jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
-                            }
-                            coincidence = false;
-                        }
-                    }
-                }
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            ItemShop productPopular = null;
-            if (!productsOfTheDay.isEmpty()) {
-                productsOfTheDay.sort((o1, o2) -> o2.getRating() - o1.getRating());
-                productPopular = productsOfTheDay.get(0);
-            }
-
-            int sumSale = 0;
-            int sumOrder = 0;
-            int sumSaleMoney = 0;
-
-            if (!productsOfTheDay.isEmpty()) {
-                for (ItemShop ishop : productsOfTheDay) {
-                    sumSale = sumSale + ishop.getSale();
-                    sumOrder = sumOrder + ishop.getOrder();
-                    String forPay = ishop.getForPay();
-                    sumSaleMoney = (int) (sumSaleMoney + Float.parseFloat(forPay));
-                }
-            }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            generetedURL = URLRequestResponse.generateURL(2, 1, TOKENWBSTANDART);
-            try {
-                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENWBSTANDART);
-                if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
-                    System.out.println(response);
-                    JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
-                    for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                        for (Product productCurrent : stock) {
-                            if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
-                                productCurrent.setPrice(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("price").toString()));
-                                productCurrent.setDiscount(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("discount").toString()));
-                                productCurrent.setPromoCode(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("promoCode").toString()));
-                            }
-                        }
-                    }
-                }
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            int total = 0;
-
-            for (Product productCurrent : stock) {
-                int money = productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 68 / 10000;
-                productCurrent.setTotal(money);
-                total = total + money;
-            }
-
-            stock.sort((o1, o2) -> o2.getTotal() - o1.getTotal());
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -277,10 +175,6 @@ public class WBServlet extends HttpServlet {
             for (ItemShop itemShop : productsOfTheMonth) {
                 productsOfTheMonthPrev.add(itemShop);
             }
-            stockPrev = new ArrayList<>();
-            for (Product product : stock) {
-                stockPrev.add(product);
-            }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -291,9 +185,6 @@ public class WBServlet extends HttpServlet {
             httpServletRequest.setAttribute("sumOrder", sumOrder);
             httpServletRequest.setAttribute("sumSale", sumSale);
             httpServletRequest.setAttribute("sumSaleMoney", sumSaleMoney);
-
-            httpServletRequest.setAttribute("stock", stock);
-            httpServletRequest.setAttribute("total", total);
 
             httpServletRequest.setAttribute("shop1", "wb");
             httpServletRequest.setAttribute("shop2", "ozon");

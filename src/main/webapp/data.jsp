@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="SOKOL0VE.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+
     <meta name="generator" content="Nicepage 4.7.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
@@ -47,7 +48,7 @@
           </div>
           <div class="u-custom-menu u-nav-container">
             <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/stock?shop=${shop1}" data-page-id="36011200">Склад</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
           </div>
@@ -56,7 +57,7 @@
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#sec-e0bf" data-page-id="36011200">Склад</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/stock?shop=${shop1}" data-page-id="36011200">Склад</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
               </div>
@@ -110,8 +111,6 @@
             </div>
           </div>
         </div>
-        <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-15">Товаров на складе на сумму</h1>
-        <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-16">${total} р.</h1>
       </div>
 
 
@@ -225,45 +224,6 @@
                 </div>
               </div>
             </section>
-    <section class="u-align-center u-clearfix u-section-3" id="sec-e0bf">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <h1 class="u-text u-text-default u-text-1">Склад</h1>
-        <div class="u-expanded-width u-table u-table-responsive u-table-1">
-          <table class="u-table-entity u-table-entity-1">
-            <colgroup>
-              <col width="25%">
-              <col width="15%">
-              <col width="15%">
-              <col width="15%">
-              <col width="15%">
-              <col width="15%">
-            </colgroup>
-            <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
-              <tr style="height: 45px;">
-                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=name">Наименование</a></th>
-                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=remain">Остаток</a></th>
-                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=ontheway">В пути</a></th>
-                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=profit">Прибыль</a></th>
-                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=price">Цена</a></th>
-                <th class="u-table-cell"><a href="/${shop1}?category=stock&value=discount">Скидка</a></th>
-              </tr>
-            </thead>
-            <tbody class="u-table-alt-palette-1-light-3 u-table-body">
-              <c:forEach var="count" items="${stock}">
-                <tr style="height: 65px;">
-                    <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
-                    <td class="u-table-cell">${count.quantity}</td>
-                    <td class="u-table-cell">${count.quantityFull - count.quantity}</td>
-                    <td class="u-table-cell">${count.total}</td>
-                    <td class="u-table-cell">${count.price}</td>
-                    <td class="u-table-cell">${count.discount}</td>
-                </tr>
-              </c:forEach>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
     <section class="u-clearfix u-palette-1-light-3 u-section-4" id="sec-c82f">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-20 u-layout-wrap u-layout-wrap-1">

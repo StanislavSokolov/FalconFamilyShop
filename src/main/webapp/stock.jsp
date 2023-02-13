@@ -10,57 +10,11 @@
     <meta name="keywords" content="Travel, Start Your Jorney, Discount 10-30% Off, Why Choose Us">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
-    <title>Информация</title>
+    <title>Склад ${title1}</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="DATA.css" media="screen">
+<link rel="stylesheet" href="SOKOL0VE.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-          google.charts.load('current', {'packages':['bar']});
-          google.charts.setOnLoadCallback(drawChart);
-                                   function drawChart() {
-                                           var data = google.visualization.arrayToDataTable([
-                                             ['Дата', 'Купили (${totalSaleWeek})', 'Заказали (${totalOrderWeek})'],
-                                             <c:forEach var="day" items="${arrayListWeek}">
-                                                ['${day.date}', ${day.sumSale}, ${day.sumOrder}],
-                                             </c:forEach>
-                                           ]);
-
-                                           var options = {
-                                             chart: {
-                                               title: '${shop1}',
-                                               subtitle: 'График заказов и продаж за текущую неделю',
-                                             }
-                                           };
-
-                                           var chart = new google.charts.Bar(document.getElementById('air'));
-
-                                           chart.draw(data, google.charts.Bar.convertOptions(options));
-                                         }
-
-                                         google.charts.setOnLoadCallback(drawChart1);
-                                                       function drawChart1() {
-                                                               var data = google.visualization.arrayToDataTable([
-                                                                 ['Дата', 'Оборот (${totalSaleMoneyWeek})'],
-                                                                 <c:forEach var="day" items="${arrayListWeek}">
-                                                                 ['${day.date}', ${day.sumSaleMoney}],
-                                                                 </c:forEach>
-                                                               ]);
-
-                                                               var options = {
-                                                                 chart: {
-                                                                   title: '${shop1}',
-                                                                   subtitle: 'График вознаграждений за текущую неделю',
-                                                                 }
-                                                               };
-
-                                                               var chart = new google.charts.Bar(document.getElementById('qwerty'));
-
-                                                               chart.draw(data, google.charts.Bar.convertOptions(options));
-                                                             }
-        </script>
 
     <meta name="generator" content="Nicepage 4.7.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -79,7 +33,7 @@
   </head>
   <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="/${shop2}">Перейти на ${title2}</a>
+          <a href="/stock?shop=${shop2}">Перейти на ${title2}</a>
         </h3>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
@@ -109,48 +63,15 @@
           </div>
         </nav>
       </div></header>
-    <section class="skrollable u-align-center u-clearfix u-image u-parallax u-section-1" id="carousel_de4a" data-image-width="1600" data-image-height="1182">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-body-alt-color u-text-default u-text-1">Информация</h1>
-        <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <div id="air" <div id="air" style="width: 400px; height: 300px;"></div>></div>
-            <div id="qwerty" <div id="air" style="width: 400px; height: 300px;"></div>></div>
-          <!-- <table class="u-table-entity u-table-entity-1">
-            <colgroup>
-              <col width="15%">
-              <col width="15%">
-              <col width="15%">
-              <col width="15">
-              <col width="40%">
-            </colgroup>
-            <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
-                            <tr style="height: 45px;">
-                              <th class="u-table-cell"><a href="/information?category=info&value=date">Дата</a></th>
-                              <th class="u-table-cell"><a href="/information?category=info&value=order">Заказали</a></th>
-                              <th class="u-table-cell"><a href="/information?category=info&value=sale">Купили</a></th>
-                              <th class="u-table-cell"><a href="/information?category=info&value=forpay">Вознаграждение</a></th>
-                              <th class="u-table-cell"><a href="/information?category=info&value=popitem">Товар дня</a></th>
-                            </tr>
-            </thead>
-            <tbody class="u-table-alt-palette-1-light-3 u-table-body">
-              <c:forEach var="day" items="${arrayListDay}">
-                                  <tr style="height: 65px;">
-                                      <td class="u-table-cell">${day.date}</td>
-                                      <td class="u-table-cell">${day.sumSale}</td>
-                                      <td class="u-table-cell">${day.sumOrder}</td>
-                                      <td class="u-table-cell">${day.sumSaleMoney}</td>
-                                      <td class="u-table-cell">${day.subject}</td>
-                                  </tr>
-              </c:forEach>
-            </tbody>
-          </table> -->
-        </div>
-      </div>
-    </section>
-    <body>
-      <!-- <div id="air" style="width: 500px; height: 400px;"></div> -->
+    <section class="skrollable u-clearfix u-image u-parallax u-section-1" src="" id="sec-59a1">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <h1 class="u-text u-text-body-alt-color u-title u-text-1">Склад ${title1}</h1>
 
-    </body>
+            <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-15">Товаров на складе на сумму</h1>
+            <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-16">${total} р.</h1>
+          </div>
+    </section>
+
     <section class="u-align-center u-clearfix u-section-3" id="sec-e0bf">
           <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
             <h1 class="u-text u-text-default u-text-1">Склад</h1>
@@ -166,12 +87,12 @@
                 </colgroup>
                 <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
                   <tr style="height: 45px;">
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=name">Наименование</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=remain">Остаток</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=ontheway">В пути</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=profit">Прибыль</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=price">Цена</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=discount">Скидка</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=name">Наименование</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=remain">Остаток</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=ontheway">В пути</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=profit">Прибыль</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=price">Цена</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=discount">Скидка</a></th>
                   </tr>
                 </thead>
                 <tbody class="u-table-alt-palette-1-light-3 u-table-body">
