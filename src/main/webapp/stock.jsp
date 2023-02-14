@@ -16,6 +16,70 @@
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load("current", {packages:["corechart"]});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                <c:forEach var="item" items="${stock}">
+                    ['${item.subject} (арт. ${item.supplierArticle})', ${item.quantity}],
+                </c:forEach>
+            ]);
+
+            var options = {
+              title: 'Остатки',
+              is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_stock'));
+            chart.draw(data, options);
+          }
+        </script>
+
+        <script type="text/javascript">
+                  google.charts.load("current", {packages:["corechart"]});
+                  google.charts.setOnLoadCallback(drawChart);
+                  function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Task', 'Hours per Day'],
+                        <c:forEach var="item" items="${stock}">
+                            ['${item.subject} (арт. ${item.supplierArticle})', ${item.quantityFull - item.quantity}],
+                        </c:forEach>
+                    ]);
+
+                    var options = {
+                      title: 'В пути',
+                      is3D: true,
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_toway'));
+                    chart.draw(data, options);
+                  }
+                </script>
+
+                <script type="text/javascript">
+                          google.charts.load("current", {packages:["corechart"]});
+                          google.charts.setOnLoadCallback(drawChart);
+                          function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Task', 'Hours per Day'],
+                                <c:forEach var="item" items="${stock}">
+                                    ['${item.subject} (арт. ${item.supplierArticle})', ${item.total}],
+                                </c:forEach>
+                            ]);
+
+                            var options = {
+                              title: 'Выручка',
+                              is3D: true,
+                            };
+
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_money'));
+                            chart.draw(data, options);
+                          }
+                        </script>
+
     <meta name="generator" content="Nicepage 4.7.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
@@ -69,11 +133,17 @@
 
             <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-15">Товаров на складе на сумму</h1>
             <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-16">${total} р.</h1>
+
+            <div id="piechart_3d_stock" style="width: 900px; height: 500px;"></div>
+
           </div>
     </section>
 
     <section class="u-align-center u-clearfix u-section-3" id="sec-e0bf">
           <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+
+                      <div id="piechart_3d_toway" style="width: 900px; height: 500px;"></div>
+                      <div id="piechart_3d_money" style="width: 900px; height: 500px;"></div>
             <h1 class="u-text u-text-default u-text-1">Склад</h1>
             <div class="u-expanded-width u-table u-table-responsive u-table-1">
               <table class="u-table-entity u-table-entity-1">

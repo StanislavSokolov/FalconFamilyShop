@@ -22,6 +22,7 @@ public class StockServlet extends HttpServlet {
     private final String TOKENOZON1 = "TOKENOZON1";
     private final String TOKENOZON2 = "TOKENOZON2";
 
+
     ArrayList<Product> stockPrev;
 
     @Override

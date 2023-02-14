@@ -79,7 +79,7 @@
   </head>
   <body class="u-body u-overlap u-xl-mode"><header class="u-clearfix u-header" id="sec-320d"><div class="u-align-left u-clearfix u-sheet u-sheet-1">
         <h3 class="u-align-left-xs u-headline u-hover-feature u-text u-text-body-alt-color u-text-1">
-          <a href="/${shop2}">Перейти на ${title2}</a>
+          <a href="/information?shop=${shop2}">Перейти на ${title2}</a>
         </h3>
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
           <div class="menu-collapse" style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700;">
@@ -113,8 +113,8 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <h1 class="u-text u-text-body-alt-color u-text-default u-text-1">Информация</h1>
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <div id="air" <div id="air" style="width: 400px; height: 300px;"></div>></div>
-            <div id="qwerty" <div id="air" style="width: 400px; height: 300px;"></div>></div>
+            <div id="air" <div id="air" style="width: 400px; height: 300px;"></div></div>
+            <div id="qwerty" <div id="air" style="width: 400px; height: 300px;"></div></div>
           <!-- <table class="u-table-entity u-table-entity-1">
             <colgroup>
               <col width="15%">
@@ -151,45 +151,6 @@
       <!-- <div id="air" style="width: 500px; height: 400px;"></div> -->
 
     </body>
-    <section class="u-align-center u-clearfix u-section-3" id="sec-e0bf">
-          <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-            <h1 class="u-text u-text-default u-text-1">Склад</h1>
-            <div class="u-expanded-width u-table u-table-responsive u-table-1">
-              <table class="u-table-entity u-table-entity-1">
-                <colgroup>
-                  <col width="25%">
-                  <col width="15%">
-                  <col width="15%">
-                  <col width="15%">
-                  <col width="15%">
-                  <col width="15%">
-                </colgroup>
-                <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
-                  <tr style="height: 45px;">
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=name">Наименование</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=remain">Остаток</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=ontheway">В пути</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=profit">Прибыль</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=price">Цена</a></th>
-                    <th class="u-table-cell"><a href="/${shop1}?category=stock&value=discount">Скидка</a></th>
-                  </tr>
-                </thead>
-                <tbody class="u-table-alt-palette-1-light-3 u-table-body">
-                  <c:forEach var="count" items="${stock}">
-                    <tr style="height: 65px;">
-                        <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
-                        <td class="u-table-cell">${count.quantity}</td>
-                        <td class="u-table-cell">${count.quantityFull - count.quantity}</td>
-                        <td class="u-table-cell">${count.total}</td>
-                        <td class="u-table-cell">${count.price}</td>
-                        <td class="u-table-cell">${count.discount}</td>
-                    </tr>
-                  </c:forEach>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
     <section class="u-clearfix u-palette-1-light-3 u-section-2" id="sec-9aa4">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-30 u-layout-wrap u-layout-wrap-1">
