@@ -108,7 +108,7 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}" data-page-id="36011200">Статистика</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/stock?shop=${shop1}" data-page-id="36011200">Склад</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
@@ -117,7 +117,7 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}" data-page-id="36011200">Статистика</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/stock?shop=${shop1}" data-page-id="36011200">Склад</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>

@@ -16,6 +16,150 @@
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawChartWeek);
+                function drawChartWeek() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Дата', 'Купили (${totalSaleWeek})', 'Заказали (${totalOrderWeek})'],
+                        <c:forEach var="day" items="${arrayListWeek}">
+                            ['${day.date}', ${day.sumSale}, ${day.sumOrder}],
+                        </c:forEach>
+                        ]
+                    );
+
+                    var options = {
+                        chart: {
+                            title: '${shop1}',
+                            subtitle: 'График заказов и продаж за текущую неделю',
+                        }
+                    };
+
+                    var chart = new google.charts.Bar(document.getElementById('Week'));
+
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            google.charts.setOnLoadCallback(drawChartWeekProfit);
+                function drawChartWeekProfit() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Дата', 'Оборот (${totalSaleMoneyWeek})'],
+                        <c:forEach var="day" items="${arrayListWeek}">
+                            ['${day.date}', ${day.sumSaleMoney}],
+                        </c:forEach>
+                        ]);
+
+                    var options = {
+                        chart: {
+                            title: '${shop1}',
+                            subtitle: 'График вознаграждений за текущую неделю',
+                        }
+                    };
+                    var chart = new google.charts.Bar(document.getElementById('WeekProfit'));
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            google.charts.setOnLoadCallback(drawChartMonth);
+                function drawChartMonth() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Дата', 'Купили (${totalSaleMonth})', 'Заказали (${totalOrderMonth})'],
+                        <c:forEach var="day" items="${arrayListMonth}">
+                            ['${day.date}', ${day.sumSale}, ${day.sumOrder}],
+                        </c:forEach>
+                        ]
+                    );
+
+                    var options = {
+                        chart: {
+                            title: '${shop1}',
+                            subtitle: 'График заказов и продаж за текущий месяц',
+                        }
+                    };
+
+                    var chart = new google.charts.Bar(document.getElementById('Month'));
+
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            google.charts.setOnLoadCallback(drawChartMonthProfit);
+                function drawChartMonthProfit() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Дата', 'Оборот (${totalSaleMoneyMonth})'],
+                        <c:forEach var="day" items="${arrayListMonth}">
+                            ['${day.date}', ${day.sumSaleMoney}],
+                        </c:forEach>
+                        ]);
+
+                    var options = {
+                        chart: {
+                            title: '${shop1}',
+                            subtitle: 'График вознаграждений за текущий месяц',
+                        }
+                    };
+                    var chart = new google.charts.Bar(document.getElementById('MonthProfit'));
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            google.charts.setOnLoadCallback(drawChartAllTime);
+                function drawChartAllTime() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Дата', 'Купили (${totalSaleAllTime})', 'Заказали (${totalOrderAllTime})'],
+                        <c:forEach var="day" items="${arrayListAllTime}">
+                            ['${day.date}', ${day.sumSale}, ${day.sumOrder}],
+                        </c:forEach>
+                        ]
+                    );
+
+                    var options = {
+                        chart: {
+                            title: '${shop1}',
+                            subtitle: 'График заказов и продаж за три месяца',
+                        }
+                    };
+
+                    var chart = new google.charts.Bar(document.getElementById('AllTime'));
+
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            google.charts.setOnLoadCallback(drawChartAllTimeProfit);
+                function drawChartAllTimeProfit() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Дата', 'Оборот (${totalSaleMoneyAllTime})'],
+                        <c:forEach var="day" items="${arrayListAllTime}">
+                            ['${day.date}', ${day.sumSaleMoney}],
+                        </c:forEach>
+                        ]);
+
+                    var options = {
+                        chart: {
+                            title: '${shop1}',
+                            subtitle: 'График вознаграждений за три месяца',
+                        }
+                    };
+                    var chart = new google.charts.Bar(document.getElementById('AllTimeProfit'));
+                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                }
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart2);
+                function drawChart2() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Task', 'Hours per Day'],
+                            <c:forEach var="item" items="${arrayListSoldProductsOfTheWeek}">
+                                ['${item.subject} (арт. ${item.supplierArticle})', ${item.order}],
+                            </c:forEach>
+                        ]);
+
+                    var options = {
+                        title: 'Выручка',
+                        is3D: true,
+                    };
+
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_profit'));
+                    chart.draw(data, options);
+                }
+
+
+
+        </script>
+
+
     <meta name="generator" content="Nicepage 4.7.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
@@ -47,7 +191,7 @@
             </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/${shop1}" data-page-id="36011200">Статистика</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/stock?shop=${shop1}" data-page-id="36011200">Склад</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-body-alt-color" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
@@ -56,7 +200,7 @@
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}#carousel_de3a" data-page-id="36011200">Статистика</a>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/${shop1}" data-page-id="36011200">Статистика</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/stock?shop=${shop1}" data-page-id="36011200">Склад</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/information?shop=${shop1}" data-page-id="36011200">Информация</a>
 </li></ul>
@@ -112,18 +256,6 @@
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
     </section>
     <section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
@@ -190,7 +322,26 @@
               </table>
             </div>
           </div>
-        </section>
+    </section>
+    <section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <h1 class="u-text u-text-default u-text-1">Динамика за неделю</h1>
+            <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                <div id="Week" <div id="air" style="width: 600px; height: 300px;"></div></div>
+                <div id="WeekProfit" <div id="air" style="width: 600px; height: 300px;"></div></div>
+            </div>
+        </div>
+    </section>
+    <!--<section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <h1 class="u-text u-text-default u-text-1">Доли за неделю</h1>
+            <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                <div id="piechart_3d_profit" style="width: 900px; height: 500px;"></div>
+                <div id="piechart_3d_sale" style="width: 900px; height: 500px;"></div>
+                <div id="piechart_3d_order" style="width: 900px; height: 500px;"></div>
+            </div>
+        </div>
+    </section> -->
     <section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
               <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
                 <h1 class="u-text u-text-default u-text-1">Статистика за месяц</h1>
@@ -224,6 +375,57 @@
                 </div>
               </div>
             </section>
+    <section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <h1 class="u-text u-text-default u-text-1">Динамика за месяц</h1>
+                <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                    <div id="Month" <div id="air" style="width: 800px; height: 300px;"></div></div>
+                    <div id="MonthProfit" <div id="air" style="width: 800px; height: 300px;"></div></div>
+                </div>
+        </div>
+    </section>
+<section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
+              <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                <h1 class="u-text u-text-default u-text-1">Статистика за три месяца</h1>
+                <div class="u-expanded-width u-table u-table-responsive u-table-1">
+                  <table class="u-table-entity u-table-entity-1">
+                    <colgroup>
+                      <col width="25%">
+                      <col width="25%">
+                      <col width="25%">
+                      <col width="25%">
+                    </colgroup>
+                    <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
+                      <tr style="height: 45px;">
+                        <th class="u-table-cell"><a href="/${shop1}?category=statalltime&value=name">Наименование</a></th>
+                        <th class="u-table-cell"><a href="/${shop1}?category=statalltime&value=order">Заказали</a></th>
+                        <th class="u-table-cell"><a href="/${shop1}?category=statalltime&value=sale">Купили</a></th>
+                        <th class="u-table-cell"><a href="/${shop1}?category=statalltime&value=forpay">Вознаграждение</a></th>
+                      </tr>
+                    </thead>
+                    <tbody class="u-table-alt-palette-1-light-3 u-table-body">
+                        <c:forEach var="count" items="${arrayListSoldProductsOfTheAllTime}">
+                            <tr style="height: 65px;">
+                                <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                                <td class="u-table-cell">${count.order}</td>
+                                <td class="u-table-cell">${count.sale}</td>
+                                <td class="u-table-cell">${count.forPay}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+    <section class="u-align-center u-clearfix u-section-2" id="carousel_de3a">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+            <h1 class="u-text u-text-default u-text-1">Динамика за три месяца</h1>
+                <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+                    <div id="AllTime" <div id="air" style="width: 1200px; height: 300px;"></div></div>
+                    <div id="AllTimeProfit" <div id="air" style="width: 1200px; height: 300px;"></div></div>
+                </div>
+        </div>
+    </section>
     <section class="u-clearfix u-palette-1-light-3 u-section-4" id="sec-c82f">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-gutter-20 u-layout-wrap u-layout-wrap-1">
