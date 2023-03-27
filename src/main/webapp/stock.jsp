@@ -134,7 +134,8 @@
             <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-15">Товаров на складе на сумму</h1>
             <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-16">${total} р.</h1>
 
-            <div id="piechart_3d_stock" style="width: 900px; height: 500px;"></div>
+            <!--<div id="piechart_3d_stock" style="width: 900px; height: 500px;"></div>-->
+            <div id="piechart_3d_money" style="width: 900px; height: 500px;"></div>
 
           </div>
     </section>
@@ -142,8 +143,8 @@
     <section class="u-align-center u-clearfix u-section-3" id="sec-e0bf">
           <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
 
-                      <div id="piechart_3d_toway" style="width: 900px; height: 500px;"></div>
-                      <div id="piechart_3d_money" style="width: 900px; height: 500px;"></div>
+                      <!--<div id="piechart_3d_toway" style="width: 900px; height: 500px;"></div>
+                      <div id="piechart_3d_money" style="width: 900px; height: 500px;"></div>-->
             <h1 class="u-text u-text-default u-text-1">Склад</h1>
             <div class="u-expanded-width u-table u-table-responsive u-table-1">
               <table class="u-table-entity u-table-entity-1">
@@ -151,18 +152,16 @@
                   <col width="25%">
                   <col width="15%">
                   <col width="15%">
-                  <col width="15%">
-                  <col width="15%">
-                  <col width="15%">
+                  <col width="20%">
+                  <col width="25%">
                 </colgroup>
                 <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
                   <tr style="height: 45px;">
                     <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=name">Наименование</a></th>
                     <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=remain">Остаток</a></th>
                     <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=ontheway">В пути</a></th>
-                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=profit">Прибыль</a></th>
-                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=price">Цена</a></th>
-                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=discount">Скидка</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=profit">Оборот</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=price">Прибыль</a></th>
                   </tr>
                 </thead>
                 <tbody class="u-table-alt-palette-1-light-3 u-table-body">
@@ -172,8 +171,7 @@
                         <td class="u-table-cell">${count.quantity}</td>
                         <td class="u-table-cell">${count.quantityFull - count.quantity}</td>
                         <td class="u-table-cell">${count.total}</td>
-                        <td class="u-table-cell">${count.price}</td>
-                        <td class="u-table-cell">${count.discount}</td>
+                        <td class="u-table-cell">${count.profit}</td>
                     </tr>
                   </c:forEach>
                 </tbody>

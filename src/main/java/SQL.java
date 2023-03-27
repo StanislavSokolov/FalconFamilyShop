@@ -63,5 +63,25 @@ public class SQL {
         }
                 return products;
     }
+
+    public static ArrayList<Product> upDateProduct(String db) {
+        ArrayList<Product> products = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = getConnection()) {
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = null;
+                if (db.equals("wb")) resultSet = statement.executeQuery("SELECT * FROM itemcostpricewb;");
+//                if (db.equals("ozon")) resultSet = statement.executeQuery("SELECT * FROM statofeveryorderfromozon WHERE cdate = '" + URLRequestResponse.getData(day) + "';");
+                while (resultSet.next()) {
+                    Product product = new Product(resultSet.getString("subject"), resultSet.getString("supplierArticle"), resultSet.getInt("costprice"), resultSet.getInt("nmId"), resultSet.getInt("shippingСost"), resultSet.getInt("quantity"), resultSet.getInt("quantityFull"), resultSet.getInt("price"), resultSet.getInt("discount"), resultSet.getInt("promoCode"));
+                    products.add(product);
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return products;
+    }
 }
 

@@ -8,6 +8,47 @@ public class Product {
     private int discount = 0;
     private int promoCode = 0;
     private int total = 0;
+    private int profit = 0;
+    private int costprice = 0;
+
+    public int getCostprice() {
+        return costprice;
+    }
+
+    public void setCostprice(int costprice) {
+        this.costprice = costprice;
+    }
+
+    public int getShippingСost() {
+        return shippingСost;
+    }
+
+    public void setShippingСost(int shippingСost) {
+        this.shippingСost = shippingСost;
+    }
+
+    private int shippingСost = 0;
+
+    public int getProfit() {
+        return profit;
+    }
+
+    public void setProfit(int profit) {
+        this.profit = profit;
+    }
+
+    public Product(String subject, String supplierArticle, int costprice, int nmId, int shippingСost, int quantity, int quantityFull, int price, int discount, int promoCode) {
+        this.supplierArticle = supplierArticle;
+        this.quantity = quantity;
+        this.quantityFull = quantityFull;
+        this.nmId = nmId;
+        this.subject = subject;
+        this.price = price;
+        this.discount = discount;
+        this.promoCode = promoCode;
+        this.costprice = costprice;
+        this.shippingСost = shippingСost;
+    }
 
     public int getTotal() {
         return total;

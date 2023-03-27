@@ -16,13 +16,6 @@ import static java.lang.Integer.parseInt;
 @WebServlet("/stock")
 public class StockServlet extends HttpServlet {
 
-    private final String TOKENWBSTANDART = "TOKENWBSTANDART";
-    private final String TOKENWBSTATISTIC = "TOKENWBSTATISTIC";
-    private final String TOKENWBADVERTISING = "TOKENWBADVERTISING";
-    private final String TOKENOZON1 = "TOKENOZON1";
-    private final String TOKENOZON2 = "TOKENOZON2";
-
-
     ArrayList<Product> stockPrev;
 
     @Override
@@ -59,9 +52,6 @@ public class StockServlet extends HttpServlet {
         ArrayList<Product> stock = new ArrayList<>();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        URL generetedURL;
-        String response = null;
 
         int total = 0;
 
@@ -112,69 +102,16 @@ public class StockServlet extends HttpServlet {
                     httpServletRequest.setAttribute("title1", "WB");
                     httpServletRequest.setAttribute("title2", "OZON");
 
-                    generetedURL = URLRequestResponse.generateURL(2, 5, TOKENWBSTATISTIC);
-                    try {
-                        response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENWBSTATISTIC);
-                        System.out.println(response);
-                        if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
-                            JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
-                            for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                                boolean coincidence = false;
-                                if (stock.isEmpty()) {
-                                    stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                            parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
-                                            parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
-                                            parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
-                                            jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
-                                } else {
-                                    for (Product productCurrent : stock) {
-                                        if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
-                                            productCurrent.setQuantity(productCurrent.getQuantity() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()));
-                                            productCurrent.setQuantityFull(productCurrent.getQuantityFull() + parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()));
-                                            coincidence = true;
-                                        }
-                                    }
-                                    if (!coincidence) {
-                                        stock.add(new Product(jsonObject.getJSONArray("price").getJSONObject(i).get("supplierArticle").toString(),
-                                                parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantity").toString()),
-                                                parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("quantityFull").toString()),
-                                                parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString()),
-                                                jsonObject.getJSONArray("price").getJSONObject(i).get("subject").toString()));
-                                    }
-                                    coincidence = false;
-                                }
-                            }
-                        }
-                    } catch (IOException | URISyntaxException e) {
-                        e.printStackTrace();
-                    }
+                    stock = SQL.upDateProduct("wb");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                    generetedURL = URLRequestResponse.generateURL(2, 1, TOKENWBSTANDART);
-                    try {
-                        response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENWBSTANDART);
-                        if (!response.equals("{\"errors\":[\"(api-new) too many requests\"]}")) {
-                            System.out.println(response);
-                            JSONObject jsonObject = new JSONObject("{\"price\":" + response + "}");
-                            for (int i = 0; i < jsonObject.getJSONArray("price").length(); i++) {
-                                for (Product productCurrent : stock) {
-                                    if (productCurrent.getNmId() == parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("nmId").toString())) {
-                                        productCurrent.setPrice(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("price").toString()));
-                                        productCurrent.setDiscount(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("discount").toString()));
-                                        productCurrent.setPromoCode(parseInt(jsonObject.getJSONArray("price").getJSONObject(i).get("promoCode").toString()));
-                                    }
-                                }
-                            }
-                        }
-                    } catch (IOException | URISyntaxException e) {
-                        e.printStackTrace();
-                    }
-
                     for (Product productCurrent : stock) {
-                        int money = productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 68 / 10000;
+                        int money = ((productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 80 / 10000) - (productCurrent.getQuantity() * productCurrent.getShippingСost())) * 90 / 100 ;
                         productCurrent.setTotal(money);
                         total = total + money;
+
+                        if (money != 0) productCurrent.setProfit(money - productCurrent.getCostprice() * productCurrent.getQuantity());
                     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 }
@@ -184,41 +121,37 @@ public class StockServlet extends HttpServlet {
                     httpServletRequest.setAttribute("title1", "OZON");
                     httpServletRequest.setAttribute("title2", "WB");
 
-                    generetedURL = URLRequestResponse.generateURL(3, 1, "0");
-                    try {
-                        response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENOZON1, TOKENOZON2, 1, "0", "0");
-                        JSONObject jsonObject = new JSONObject(response);
-                        JSONObject jsonObject1 = new JSONObject(String.valueOf(jsonObject.get("result")));
-                        generetedURL = URLRequestResponse.generateURL(3, 2, "0");
-                        for (int i = 0; i < jsonObject1.getJSONArray("items").length(); i++) {
-                            try {
-                                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENOZON1, TOKENOZON2, 2, jsonObject1.getJSONArray("items").getJSONObject(i).get("product_id").toString(), "0");
-                            } catch (IOException | URISyntaxException e) {
-                                e.printStackTrace();
-                            }
-                            JSONObject jsonObject2 = new JSONObject(response);
-                            JSONObject jsonObject3 = new JSONObject(String.valueOf(jsonObject2.get("result")));
-                            JSONObject jsonObject4 = new JSONObject(String.valueOf(jsonObject3.get("stocks")));
-                            Product product = new Product(jsonObject3.get("id").toString(), parseInt(jsonObject4.get("present").toString()), parseInt(jsonObject4.get("present").toString()) + parseInt(jsonObject4.get("reserved").toString()), parseInt(jsonObject3.get("id").toString()), jsonObject3.get("name").toString());
-                            product.setPrice(((int) Float.parseFloat(jsonObject3.get("price").toString())));
-                            product.setDiscount((int) (100 - 100 * (Float.parseFloat(jsonObject3.get("price").toString())/Float.parseFloat(jsonObject3.get("old_price").toString()))));
-                            stock.add(product);
-                        }
-                    } catch (IOException | URISyntaxException e) {
-                        e.printStackTrace();
-                    }
+//                    generetedURL = URLRequestResponse.generateURL(3, 1, "0");
+//                    try {
+//                        response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENOZON1, TOKENOZON2, 1, "0", "0");
+//                        JSONObject jsonObject = new JSONObject(response);
+//                        JSONObject jsonObject1 = new JSONObject(String.valueOf(jsonObject.get("result")));
+//                        generetedURL = URLRequestResponse.generateURL(3, 2, "0");
+//                        for (int i = 0; i < jsonObject1.getJSONArray("items").length(); i++) {
+//                            try {
+//                                response = URLRequestResponse.getResponseFromURL(generetedURL, TOKENOZON1, TOKENOZON2, 2, jsonObject1.getJSONArray("items").getJSONObject(i).get("product_id").toString(), "0");
+//                            } catch (IOException | URISyntaxException e) {
+//                                e.printStackTrace();
+//                            }
+//                            JSONObject jsonObject2 = new JSONObject(response);
+//                            JSONObject jsonObject3 = new JSONObject(String.valueOf(jsonObject2.get("result")));
+//                            JSONObject jsonObject4 = new JSONObject(String.valueOf(jsonObject3.get("stocks")));
+//                            Product product = new Product(jsonObject3.get("id").toString(), parseInt(jsonObject4.get("present").toString()), parseInt(jsonObject4.get("present").toString()) + parseInt(jsonObject4.get("reserved").toString()), parseInt(jsonObject3.get("id").toString()), jsonObject3.get("name").toString());
+//                            product.setPrice(((int) Float.parseFloat(jsonObject3.get("price").toString())));
+//                            product.setDiscount((int) (100 - 100 * (Float.parseFloat(jsonObject3.get("price").toString())/Float.parseFloat(jsonObject3.get("old_price").toString()))));
+//                            stock.add(product);
+//                        }
+//                    } catch (IOException | URISyntaxException e) {
+//                        e.printStackTrace();
+//                    }
 
-
-
-                    for (Product productCurrent : stock) {
-                        int money = productCurrent.getQuantity() * productCurrent.getPrice() * 80 / 100;
-                        productCurrent.setTotal(money);
-                        total = total + money;
-                    }
+//                    for (Product productCurrent : stock) {
+//                        int money = productCurrent.getQuantity() * productCurrent.getPrice() * 80 / 100;
+//                        productCurrent.setTotal(money);
+//                        total = total + money;
+//                    }
                 }
             }
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
