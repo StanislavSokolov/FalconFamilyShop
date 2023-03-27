@@ -161,7 +161,7 @@
                     <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=remain">Остаток</a></th>
                     <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=ontheway">В пути</a></th>
                     <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=profit">Оборот</a></th>
-                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=price">Прибыль</a></th>
+                    <th class="u-table-cell"><a href="/stock?shop=${shop1}&value=cleanprofit">Прибыль</a></th>
                   </tr>
                 </thead>
                 <tbody class="u-table-alt-palette-1-light-3 u-table-body">

@@ -62,15 +62,16 @@ public class StockServlet extends HttpServlet {
             if (value.equals("remain")) stockPrev.sort((o1, o2) -> o2.getQuantity() - o1.getQuantity());
             if (value.equals("ontheway")) stockPrev.sort((o1, o2) -> (o2.getQuantityFull() - o2.getQuantity()) - (o1.getQuantityFull() - o1.getQuantity()));
             if (value.equals("profit")) stockPrev.sort((o1, o2) -> o2.getTotal() - o1.getTotal());
-            if (value.equals("price")) stockPrev.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
-            if (value.equals("discount")) stockPrev.sort((o1, o2) -> o2.getDiscount() - o1.getDiscount());
+            if (value.equals("cleanprofit")) stockPrev.sort((o1, o2) -> o2.getProfit() - o1.getProfit());
 
             if (shop != null) {
                 if (shop.equals("wb")) {
                     for (Product productCurrent : stockPrev) {
-                        int money = productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 68 / 10000;
+                        int money = ((productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 80 / 10000) - (productCurrent.getQuantity() * productCurrent.getShippingСost())) * 90 / 100 ;
                         productCurrent.setTotal(money);
                         total = total + money;
+
+                        if (money != 0) productCurrent.setProfit(money - productCurrent.getCostprice() * productCurrent.getQuantity());
                     }
                     httpServletRequest.setAttribute("shop1", "wb");
                     httpServletRequest.setAttribute("shop2", "ozon");
