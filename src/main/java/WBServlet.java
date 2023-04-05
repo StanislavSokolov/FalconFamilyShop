@@ -1,8 +1,4 @@
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -148,8 +144,8 @@ public class WBServlet extends HttpServlet {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ArrayList<Product1> arrayListOfOrderedProductsDay = SQL.upDate1("wborders", 0);
-            ArrayList<Product1> arrayListOfSoldProductsDay = SQL.upDate1("wbsales", 0);
+            ArrayList<Product1> arrayListOfOrderedProductsDay = SQL.getData("wborders", 0);
+            ArrayList<Product1> arrayListOfSoldProductsDay = SQL.getData("wbsales", 0);
 
             ArrayList<ItemShop> productsOfTheDay = toCreateListOfSoldProducts(arrayListOfOrderedProductsDay, arrayListOfSoldProductsDay);
 
@@ -183,10 +179,10 @@ public class WBServlet extends HttpServlet {
             ArrayList<ArrayList> arrayListsOfSoldProductsWeek = new ArrayList<>();
 
             for (int i = 0; i > -7; i--) {
-                ArrayList<Product1> arrayListOfOrderedProductsCurrent = SQL.upDate1("wborders", i);
+                ArrayList<Product1> arrayListOfOrderedProductsCurrent = SQL.getData("wborders", i);
                 arrayListsOfOrderedProductsWeek.add(arrayListOfOrderedProductsCurrent);
                 for (Product1 p1: arrayListOfOrderedProductsCurrent) arrayListOfOrderedProductsWeek.add(p1);
-                ArrayList<Product1> arrayListOfSoldProductsCurrent = SQL.upDate1("wbsales", i);
+                ArrayList<Product1> arrayListOfSoldProductsCurrent = SQL.getData("wbsales", i);
                 arrayListsOfSoldProductsWeek.add(arrayListOfSoldProductsCurrent);
                 for (Product1 p1: arrayListOfSoldProductsCurrent) arrayListOfSoldProductsWeek.add(p1);
             }
@@ -204,10 +200,10 @@ public class WBServlet extends HttpServlet {
             ArrayList<ArrayList> arrayListsOfSoldProductsMonth = new ArrayList<>();
 
             for (int i = 0; i > -31; i--) {
-                ArrayList<Product1> arrayListOfOrderedProductsCurrent = SQL.upDate1("wborders", i);
+                ArrayList<Product1> arrayListOfOrderedProductsCurrent = SQL.getData("wborders", i);
                 arrayListsOfOrderedProductsMonth.add(arrayListOfOrderedProductsCurrent);
                 for (Product1 p1: arrayListOfOrderedProductsCurrent) arrayListOfOrderedProductsMonth.add(p1);
-                ArrayList<Product1> arrayListOfSoldProductsCurrent = SQL.upDate1("wbsales", i);
+                ArrayList<Product1> arrayListOfSoldProductsCurrent = SQL.getData("wbsales", i);
                 arrayListsOfSoldProductsMonth.add(arrayListOfSoldProductsCurrent);
                 for (Product1 p1: arrayListOfSoldProductsCurrent) arrayListOfSoldProductsMonth.add(p1);
             }
@@ -225,10 +221,10 @@ public class WBServlet extends HttpServlet {
             ArrayList<ArrayList> arrayListsOfSoldProductsAllTime = new ArrayList<>();
 
             for (int i = 0; i > -100; i--) {
-                ArrayList<Product1> arrayListOfOrderedProductsCurrent = SQL.upDate1("wborders", i);
+                ArrayList<Product1> arrayListOfOrderedProductsCurrent = SQL.getData("wborders", i);
                 arrayListsOfOrderedProductsAllTime.add(arrayListOfOrderedProductsCurrent);
                 for (Product1 p1: arrayListOfOrderedProductsCurrent) arrayListOfOrderedProductsAllTime.add(p1);
-                ArrayList<Product1> arrayListOfSoldProductsCurrent = SQL.upDate1("wbsales", i);
+                ArrayList<Product1> arrayListOfSoldProductsCurrent = SQL.getData("wbsales", i);
                 arrayListsOfSoldProductsAllTime.add(arrayListOfSoldProductsCurrent);
                 for (Product1 p1: arrayListOfSoldProductsCurrent) arrayListOfSoldProductsAllTime.add(p1);
             }

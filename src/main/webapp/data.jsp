@@ -279,7 +279,7 @@
             <tbody class="u-table-alt-palette-1-light-3 u-table-body">
                 <c:forEach var="count" items="${arrayListSoldProductsOfTheDay}">
                     <tr style="height: 65px;">
-                        <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                        <td class="u-table-cell"><a href="/information?shop=${shop1}&partNumber=${count.supplierArticle}">${count.subject} (арт. ${count.supplierArticle})</a></td>
                         <td class="u-table-cell">${count.order}</td>
                         <td class="u-table-cell">${count.sale}</td>
                         <td class="u-table-cell">${count.forPay}</td>
@@ -312,7 +312,7 @@
                 <tbody class="u-table-alt-palette-1-light-3 u-table-body">
                     <c:forEach var="count" items="${arrayListSoldProductsOfTheWeek}">
                         <tr style="height: 65px;">
-                            <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                            <td class="u-table-cell"><a href="/information?shop=${shop1}&partNumber=${count.supplierArticle}">${count.subject} (арт. ${count.supplierArticle})</a></td>
                             <td class="u-table-cell">${count.order}</td>
                             <td class="u-table-cell">${count.sale}</td>
                             <td class="u-table-cell">${count.forPay}</td>
@@ -364,7 +364,7 @@
                     <tbody class="u-table-alt-palette-1-light-3 u-table-body">
                         <c:forEach var="count" items="${arrayListSoldProductsOfTheMonth}">
                             <tr style="height: 65px;">
-                                <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                                <td class="u-table-cell"><a href="/information?shop=${shop1}&partNumber=${count.supplierArticle}">${count.subject} (арт. ${count.supplierArticle})</a></td>
                                 <td class="u-table-cell">${count.order}</td>
                                 <td class="u-table-cell">${count.sale}</td>
                                 <td class="u-table-cell">${count.forPay}</td>
@@ -406,7 +406,7 @@
                     <tbody class="u-table-alt-palette-1-light-3 u-table-body">
                         <c:forEach var="count" items="${arrayListSoldProductsOfTheAllTime}">
                             <tr style="height: 65px;">
-                                <td class="u-table-cell">${count.subject} (арт. ${count.supplierArticle})</td>
+                                <td class="u-table-cell"><a href="/information?shop=${shop1}&partNumber=${count.supplierArticle}">${count.subject} (арт. ${count.supplierArticle})</a></td>
                                 <td class="u-table-cell">${count.order}</td>
                                 <td class="u-table-cell">${count.sale}</td>
                                 <td class="u-table-cell">${count.forPay}</td>

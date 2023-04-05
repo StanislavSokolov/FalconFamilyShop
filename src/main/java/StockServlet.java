@@ -1,8 +1,4 @@
-import org.json.JSONObject;
-
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -103,7 +99,7 @@ public class StockServlet extends HttpServlet {
                     httpServletRequest.setAttribute("title1", "WB");
                     httpServletRequest.setAttribute("title2", "OZON");
 
-                    stock = SQL.upDateProduct("wb");
+                    stock = SQL.getData("wb");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

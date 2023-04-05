@@ -42,7 +42,8 @@ public class SQL {
         return days;
     }
 
-    public static ArrayList<Product1> upDate1(String db, int day) {
+    //
+    public static ArrayList<Product1> getData(String db, int day) {
         ArrayList<Product1> products = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
@@ -64,7 +65,48 @@ public class SQL {
                 return products;
     }
 
-    public static ArrayList<Product> upDateProduct(String db) {
+    public static ArrayList<Product1> getData(String db, String product, int day) {
+        ArrayList<Product1> products = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = getConnection()) {
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = null;
+                if (db.equals("wborders")) resultSet = statement.executeQuery("SELECT * FROM statofeveryorderfromwb WHERE cdate = '" + URLRequestResponse.getData(day) + "' AND supplierArticle = '" + product + "';");
+                if (db.equals("wbsales")) resultSet = statement.executeQuery("SELECT * FROM statofeverysalefromwb WHERE cdate = '" + URLRequestResponse.getData(day) + "' AND supplierArticle = '" + product + "';");
+//                if (db.equals("ozon")) resultSet = statement.executeQuery("SELECT * FROM statofeveryorderfromozon WHERE cdate = '" + URLRequestResponse.getData(day) + "';");
+                while (resultSet.next()) {
+                    Product1 product1 = new Product1(resultSet.getString("cdate"), resultSet.getString("csubject"), resultSet.getString("supplierArticle"), resultSet.getInt("nmId"), resultSet.getInt("finishedPrice"), resultSet.getInt("forPay"), resultSet.getString("oblastOkrugName"), resultSet.getString("odid"));
+                    products.add(product1);
+                }
+
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return products;
+    }
+
+    public static Product getData(String shop, String product) {
+        Product p = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+            try (Connection conn = getConnection()) {
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = null;
+                if (shop.equals("wb")) resultSet = statement.executeQuery("SELECT * FROM itemcostpricewb WHERE supplierArticle = '" + product + "';");
+//                if (db.equals("ozon")) resultSet = statement.executeQuery("SELECT * FROM statofeveryorderfromozon WHERE cdate = '" + URLRequestResponse.getData(day) + "';");
+                while (resultSet.next()) {
+                    p = new Product(resultSet.getString("subject"), resultSet.getString("supplierArticle"), resultSet.getInt("costprice"), resultSet.getInt("nmId"), resultSet.getInt("shippingСost"), resultSet.getInt("quantity"), resultSet.getInt("quantityFull"), resultSet.getInt("SaintPetersburg"), resultSet.getInt("SaintPetersburg2"), resultSet.getInt("Koledino"), resultSet.getInt("Electrostal"), resultSet.getInt("Kazan"), resultSet.getInt("Other"), resultSet.getInt("price"), resultSet.getInt("discount"), resultSet.getInt("promoCode"));
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return p;
+    }
+
+    public static ArrayList<Product> getData(String db) {
         ArrayList<Product> products = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
