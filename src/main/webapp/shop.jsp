@@ -94,31 +94,9 @@
       </div></header>
     <section class="skrollable u-clearfix u-image u-parallax u-section-1" src="" id="sec-59a1">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-text u-text-body-alt-color u-title u-text-1">${product.subject}</h1>
-        <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9">арт. ${product.supplierArticle}</h1>
-        <div class="u-expanded-width u-list u-list-1">
-          <div class="u-repeater u-repeater-1">
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
-                <h1 class="u-align-left u-hover-feature u-text u-text-body-alt-color u-text-default u-text-2">Цена</h1>
-                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-3">${product.priceShop}</h1>
-              </div>
-            </div>
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
-                <h1 class="u-align-left u-hover-feature u-text u-text-body-alt-color u-text-default u-text-4">Себестоимость</h1>
-                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-5">${product.costprice}</h1>
-              </div>
-            </div>
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
-                <h1 class="u-align-left u-hover-feature u-text u-text-body-alt-color u-text-default u-text-6">Прибыль</h1>
-                <h1 class="u-hover-feature u-text u-text-body-alt-color u-text-default u-text-7">${product.profit}</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9">Реализация за неделю</h1>
+        <h1 class="u-text u-text-body-alt-color u-title u-text-1"></h1>
+        <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9"></h1>
+        <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9">Реализация за месяц</h1>
         <div class="u-expanded-width u-list u-list-1">
             <div class="u-repeater u-repeater-1">
                 <div class="u-align-center u-container-style u-list-item u-repeater-item">
@@ -143,59 +121,9 @@
         </div>
         <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9">Динамика продаж</h1>
         <h1 class="u-text u-text-body-alt-color u-text-default u-title u-text-9"> </h1>
-        <div id="air" <div id="air" style="width: 600px; height: 400px;"></div></div>
+        <div id="air" <div id="air" style="width: 1000px; height: 400px;"></div></div>
       </div>
     </section>
-
-    <section class="u-align-center u-clearfix u-section-3" id="sec-e0bf">
-        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-            <h1 class="u-text u-text-default u-text-1">Наличие на складах</h1>
-            <div class="u-expanded-width u-table u-table-responsive u-table-1">
-              <table class="u-table-entity u-table-entity-1">
-                <colgroup>
-                  <col width="50%">
-                  <col width="50%">
-                </colgroup>
-                <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
-                  <tr style="height: 45px;">
-                    <th class="u-table-cell">Наименование</th>
-                    <th class="u-table-cell">Остаток</th>
-                  </tr>
-                </thead>
-                <tbody class="u-table-alt-palette-1-light-3 u-table-body">
-                    <tr style="height: 65px;">
-                        <td class="u-table-cell">Санкт-Петербург (Уткина Заводь)</td>
-                        <td class="u-table-cell">${product.saintPetersburg}</td>
-                    </tr>
-                    <tr style="height: 65px;">
-                        <td class="u-table-cell">Санкт-Петербург (Шушары)</td>
-                        <td class="u-table-cell">${product.saintPetersburg2}</td>
-                    </tr>
-                    <tr style="height: 65px;">
-                        <td class="u-table-cell">Коледино</td>
-                        <td class="u-table-cell">${product.koledino}</td>
-                    </tr>
-                    <tr style="height: 65px;">
-                        <td class="u-table-cell">Электросталь</td>
-                        <td class="u-table-cell">${product.electrostal}</td>
-                    </tr>
-                    <tr style="height: 65px;">
-                        <td class="u-table-cell">Другое</td>
-                        <td class="u-table-cell">${product.other}</td>
-                    </tr>
-                    <tr style="height: 65px;">
-                        <td class="u-table-cell">ИТОГО</td>
-                        <td class="u-table-cell">${product.quantity}</td>
-                    </tr>
-                    <tr style="height: 65px;">
-                        <td class="u-table-cell">В ПУТИ</td>
-                        <td class="u-table-cell">${product.quantityFull - product.quantity}</td>
-                    </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
 
     <section class="u-clearfix u-palette-1-light-3 u-section-5" id="sec-9aa4">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
