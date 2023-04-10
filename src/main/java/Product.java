@@ -7,6 +7,34 @@ public class Product {
     private int quantity = 0;
     private int quantityFull = 0;
 
+    public Product() {
+
+    }
+
+    public void setSaintPetersburg(int saintPetersburg) {
+        this.saintPetersburg = saintPetersburg;
+    }
+
+    public void setSaintPetersburg2(int saintPetersburg2) {
+        this.saintPetersburg2 = saintPetersburg2;
+    }
+
+    public void setKoledino(int koledino) {
+        this.koledino = koledino;
+    }
+
+    public void setElectrostal(int electrostal) {
+        this.electrostal = electrostal;
+    }
+
+    public void setKazan(int kazan) {
+        this.kazan = kazan;
+    }
+
+    public void setOther(int other) {
+        this.other = other;
+    }
+
     public int getSaintPetersburg() {
         return saintPetersburg;
     }

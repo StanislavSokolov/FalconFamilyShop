@@ -167,7 +167,7 @@
                 <tbody class="u-table-alt-palette-1-light-3 u-table-body">
                   <c:forEach var="count" items="${stock}">
                     <tr style="height: 65px;">
-                        <td class="u-table-cell"><a href="/information?shop=${shop1}&partNumber=${count.supplierArticle}">${count.subject} (арт. ${count.supplierArticle})</a></td>
+                        <td class="u-table-cell"><a href="/information?shop=${shop1}&subject=${count.subject}">${count.subject}</a> (арт. <a href="/information?shop=${shop1}&supplierArticle=${count.supplierArticle}">${count.supplierArticle}</a>)</td>
                         <td class="u-table-cell">${count.quantity}</td>
                         <td class="u-table-cell">${count.quantityFull - count.quantity}</td>
                         <td class="u-table-cell">${count.total}</td>

@@ -43,7 +43,8 @@ public class InformationServlet extends HttpServlet {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         String shop = httpServletRequest.getParameter("shop");
-        String partNumber = httpServletRequest.getParameter("partNumber");
+        String supplierArticle = httpServletRequest.getParameter("supplierArticle");
+        String subject = httpServletRequest.getParameter("subject");
 
         ArrayList<ArrayList> arrayListsSales = new ArrayList<>();
         ArrayList<ArrayList> arrayListsOrders = new ArrayList<>();
@@ -59,11 +60,11 @@ public class InformationServlet extends HttpServlet {
                 httpServletRequest.setAttribute("title1", "WB");
                 httpServletRequest.setAttribute("title2", "OZON");
 
-                if (partNumber != null) {
-                    Product product = SQL.getData(shop, partNumber);
+                if (supplierArticle != null) {
+                    Product product = SQL.getData(shop, supplierArticle);
                     for (int i = -6; i < 1; i++) {
-                        ArrayList<Product1> product1s = SQL.getData("wbsales", partNumber, i);
-                        ArrayList<Product1> product2s = SQL.getData("wborders", partNumber, i);
+                        ArrayList<Product1> product1s = SQL.getData("wbsales", "supplierArticle", supplierArticle, i);
+                        ArrayList<Product1> product2s = SQL.getData("wbsales", "supplierArticle", supplierArticle, i);
                         arrayListsSales.add(product1s);
                         arrayListsOrders.add(product2s);
                     }
@@ -87,7 +88,50 @@ public class InformationServlet extends HttpServlet {
                     httpServletRequest.setAttribute("totalOrderWeek", totalOrderWeek);
                     httpServletRequest.setAttribute("totalSaleMoneyWeek", totalSaleMoneyWeek);
 
-                    httpServletRequest.getRequestDispatcher("product.jsp").forward(httpServletRequest, httpServletResponse);
+                    httpServletRequest.getRequestDispatcher("supplierArticle.jsp").forward(httpServletRequest, httpServletResponse);
+                } else if (subject != null) {
+                    ArrayList<Product> products = SQL.getDataALP(shop, subject);
+                    Product product = new Product();
+                    for (Product p: products) {
+                        product.setSaintPetersburg(product.getSaintPetersburg() + p.getSaintPetersburg());
+                        product.setSaintPetersburg2(product.getSaintPetersburg2() + p.getSaintPetersburg2());
+                        product.setKoledino(product.getKoledino() + p.getKoledino());
+                        product.setElectrostal(product.getElectrostal() + p.getElectrostal());
+                        product.setKazan(product.getKazan() + p.getKazan());
+                        product.setOther(product.getOther() + p.getOther());
+                        product.setQuantity(product.getQuantity() + p.getQuantity());
+                        product.setQuantityFull(product.getQuantityFull() + p.getQuantityFull());
+                    }
+
+
+                    for (int i = -6; i < 1; i++) {
+                        ArrayList<Product1> product1s = SQL.getData("wbsales", "subject", subject, i);
+                        ArrayList<Product1> product2s = SQL.getData("wbsales", "subject", subject, i);
+                        arrayListsSales.add(product1s);
+                        arrayListsOrders.add(product2s);
+                    }
+                    for (int i = 0; i < 7; i++) {
+                        int orders = arrayListsOrders.get(i).size();
+                        int sales = arrayListsSales.get(i).size();
+                        int saleMoney = 0;
+                        totalOrderWeek = totalOrderWeek + arrayListsOrders.get(i).size();
+                        totalSaleWeek = totalSaleWeek + arrayListsSales.get(i).size();
+                        ArrayList<Product1> product1s = arrayListsSales.get(i);
+                        for (int j = 0; j < product1s.size(); j++) {
+                            totalSaleMoneyWeek = totalSaleMoneyWeek + product1s.get(j).getForPay();
+                            saleMoney = saleMoney + product1s.get(j).getForPay();
+                        }
+                        week.add(new Day(URLRequestResponse.getData(i-7 + 1), sales, orders, saleMoney, "test"));
+
+                    }
+                    httpServletRequest.setAttribute("week", week);
+
+                    httpServletRequest.setAttribute("product", product);
+                    httpServletRequest.setAttribute("totalSaleWeek", totalSaleWeek);
+                    httpServletRequest.setAttribute("totalOrderWeek", totalOrderWeek);
+                    httpServletRequest.setAttribute("totalSaleMoneyWeek", totalSaleMoneyWeek);
+
+                    httpServletRequest.getRequestDispatcher("subject.jsp").forward(httpServletRequest, httpServletResponse);
                 } else {
 
                     for (int i = -30; i < 1; i++) {
