@@ -7,8 +7,8 @@ public class Product {
     private int quantity = 0;
     private int quantityFull = 0;
 
-    public Product() {
-
+    public Product(String subject) {
+        this.subject = subject;
     }
 
     public void setSaintPetersburg(int saintPetersburg) {

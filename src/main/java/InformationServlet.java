@@ -64,7 +64,7 @@ public class InformationServlet extends HttpServlet {
                     Product product = SQL.getData(shop, supplierArticle);
                     for (int i = -6; i < 1; i++) {
                         ArrayList<Product1> product1s = SQL.getData("wbsales", "supplierArticle", supplierArticle, i);
-                        ArrayList<Product1> product2s = SQL.getData("wbsales", "supplierArticle", supplierArticle, i);
+                        ArrayList<Product1> product2s = SQL.getData("wborders", "supplierArticle", supplierArticle, i);
                         arrayListsSales.add(product1s);
                         arrayListsOrders.add(product2s);
                     }
@@ -91,7 +91,7 @@ public class InformationServlet extends HttpServlet {
                     httpServletRequest.getRequestDispatcher("supplierArticle.jsp").forward(httpServletRequest, httpServletResponse);
                 } else if (subject != null) {
                     ArrayList<Product> products = SQL.getDataALP(shop, subject);
-                    Product product = new Product();
+                    Product product = new Product(subject);
                     for (Product p: products) {
                         product.setSaintPetersburg(product.getSaintPetersburg() + p.getSaintPetersburg());
                         product.setSaintPetersburg2(product.getSaintPetersburg2() + p.getSaintPetersburg2());
@@ -105,8 +105,8 @@ public class InformationServlet extends HttpServlet {
 
 
                     for (int i = -6; i < 1; i++) {
-                        ArrayList<Product1> product1s = SQL.getData("wbsales", "subject", subject, i);
-                        ArrayList<Product1> product2s = SQL.getData("wbsales", "subject", subject, i);
+                        ArrayList<Product1> product1s = SQL.getData("wbsales", "csubject", subject, i);
+                        ArrayList<Product1> product2s = SQL.getData("wborders", "csubject", subject, i);
                         arrayListsSales.add(product1s);
                         arrayListsOrders.add(product2s);
                     }
