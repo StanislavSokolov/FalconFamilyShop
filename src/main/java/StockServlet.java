@@ -63,7 +63,7 @@ public class StockServlet extends HttpServlet {
             if (shop != null) {
                 if (shop.equals("wb")) {
                     for (Product productCurrent : stockPrev) {
-                        int money = ((productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 80 / 10000) - (productCurrent.getQuantity() * productCurrent.getShippingСost())) * 90 / 100 ;
+                        int money = ((productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 74 / 10000) - (productCurrent.getQuantity() * productCurrent.getShippingСost())) * 90 / 100 ;
                         productCurrent.setTotal(money);
                         total = total + money;
 
@@ -104,7 +104,7 @@ public class StockServlet extends HttpServlet {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                     for (Product productCurrent : stock) {
-                        int money = ((productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 80 / 10000) - (productCurrent.getQuantity() * productCurrent.getShippingСost())) * 90 / 100 ;
+                        int money = ((productCurrent.getQuantity() * productCurrent.getPrice() * (100 - productCurrent.getDiscount()) * 74 / 10000) - (productCurrent.getQuantity() * productCurrent.getShippingСost())) * 90 / 100 ;
                         productCurrent.setTotal(money);
                         total = total + money;
 

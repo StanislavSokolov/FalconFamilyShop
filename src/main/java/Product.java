@@ -93,8 +93,8 @@ public class Product {
         this.price = price;
         this.discount = discount;
         this.promoCode = promoCode;
-        profit = ((((this.price * (100 - this.discount) * 80)/10000) - shippingСost) * 90 / 100) - costprice;
-        priceShop = (price * (100 - discount) * 90)/10000;
+        profit = ((((this.price * (100 - this.discount) * 74)/10000) - shippingСost) * 90 / 100) - costprice;
+        priceShop = (price * (100 - discount))/100;
     }
 
     public int getCostprice() {

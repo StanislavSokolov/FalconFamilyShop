@@ -158,6 +158,10 @@
                         <td class="u-table-cell">${product.electrostal}</td>
                     </tr>
                     <tr style="height: 65px;">
+                        <td class="u-table-cell">Казань</td>
+                        <td class="u-table-cell">${product.kazan}</td>
+                    </tr>
+                    <tr style="height: 65px;">
                         <td class="u-table-cell">Другое</td>
                         <td class="u-table-cell">${product.other}</td>
                     </tr>
